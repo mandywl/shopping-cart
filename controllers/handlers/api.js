@@ -1,7 +1,7 @@
 const { Table1, Table2 } = require("../../models/models");
 
 module.exports = {
-  getApi: async function (req, res) {
+  getApi: async function(req, res) {
     try {
       result1 = await Table1.findall();
       result2 = await Table2.findall();
@@ -11,7 +11,7 @@ module.exports = {
       res.status(500).json({ error: err.code });
     }
   },
-  createData: async function (req, res) {
+  createData: async function(req, res) {
     try {
       result1 = await Table1.findall();
       result2 = await Table2.findall();
@@ -21,7 +21,7 @@ module.exports = {
       res.status(500).json({ error: err.code });
     }
   },
-  readAllData: async function (req, res) {
+  readAllData: async function(req, res) {
     try {
       result1 = await Table1.findall();
       result2 = await Table2.findall();
@@ -31,7 +31,7 @@ module.exports = {
       res.status(500).json({ error: err.code });
     }
   },
-  updateData: async function (req, res) {
+  updateData: async function(req, res) {
     try {
       result1 = await Table1.findall();
       result2 = await Table2.findall();
@@ -41,7 +41,7 @@ module.exports = {
       res.status(500).json({ error: err.code });
     }
   },
-  deleteData: async function (req, res) {
+  deleteData: async function(req, res) {
     try {
       result1 = await Table1.findall();
       result2 = await Table2.findall();
