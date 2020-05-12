@@ -4,15 +4,15 @@ module.exports = {
   Table1: sequelize.define(
     "table1",
     {
-      table1_name: {
+      table1Name: {
         type: Sequelize.STRING(20),
         allowNull: false,
       },
-      table1_bool: {
+      table1Bool: {
         type: Sequelize.BOOLEAN,
         default: false,
       },
-      table1_numnber: {
+      table1Number: {
         type: Sequelize.INTEGER,
         default: false,
       },
@@ -22,15 +22,15 @@ module.exports = {
   Table2: sequelize.define(
     "table2",
     {
-      table2_name: {
+      table2Name: {
         type: Sequelize.STRING(20),
         allowNull: false,
       },
-      table2_bool: {
+      table2Bool: {
         type: Sequelize.BOOLEAN,
         default: false,
       },
-      table2_numnber: {
+      table2Number: {
         type: Sequelize.INTEGER,
         default: false,
       },

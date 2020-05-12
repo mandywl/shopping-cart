@@ -1,5 +1,5 @@
 module.exports = {
-  getIndex: async function (req, res) {
+  getIndex: async function(req, res) {
     try {
       res.locals.metaTags = {
         title: "Hello",
