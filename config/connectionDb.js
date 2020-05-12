@@ -11,5 +11,5 @@ module.exports = {
     host,
     dialect: mysql,
   })),
-  Op = Sequelize.Op
+  //Op = Sequelize.Op
 };
