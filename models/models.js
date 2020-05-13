@@ -1,4 +1,4 @@
-const { sequelize } = require("../config/connectionDb");
+const { Sequelize, sequelize } = require("../config/connectionDb");
 
 module.exports = {
   Table1: sequelize.define(
