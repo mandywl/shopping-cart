@@ -1,40 +1,67 @@
+/* eslint-disable camelcase */
 const { Sequelize, sequelize } = require("../config/connectionDb");
 
 module.exports = {
-  Table1: sequelize.define(
-    "table1",
+  Users: sequelize.define(
+    "users",
     {
-      table1Name: {
-        type: Sequelize.STRING(20),
+      first_name: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      table1Bool: {
-        type: Sequelize.BOOLEAN,
-        default: false,
+      last_name: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
-      table1Number: {
-        type: Sequelize.INTEGER,
-        default: false,
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true,
+        },
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      address: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
     },
     { timestamps: false }
   ),
-  Table2: sequelize.define(
-    "table2",
+  Products: sequelize.define(
+    "products",
     {
-      table2Name: {
-        type: Sequelize.STRING(20),
+      product_name: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      table2Bool: {
-        type: Sequelize.BOOLEAN,
-        default: false,
+      price: {
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false,
       },
-      table2Number: {
-        type: Sequelize.INTEGER,
-        default: false,
+      img: {
+        type: Sequelize.BLOB,
+        allowNull: false,
       },
     },
     { timestamps: false }
   ),
+  Orders: sequelize.define("orders", {
+    product_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    user_id: {
+      type: Sequelize.INTEGER,
+      default: false,
+    },
+    comment: {
+      type: Sequelize.STRING,
+      default: false,
+    },
+  }),
 };
