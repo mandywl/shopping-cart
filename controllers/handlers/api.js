@@ -1,4 +1,4 @@
-const { Users, Products, Orders } = require("../../models/models");
+const { Products } = require("../../models/models");
 
 module.exports = {
   getApi: async function(req, res) {
