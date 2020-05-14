@@ -47,7 +47,7 @@ module.exports = {
       return res.redirect("/");
     } catch (err) {
       console.error(err);
-      return res.status(401).json({ error: err.code });
+      return res.status(500).json({ error: err.code });
     }
   },
 };
