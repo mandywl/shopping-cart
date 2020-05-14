@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "jest; npm run lint",
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
@@ -33,7 +33,9 @@
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
+    "jest": "^26.0.1",
     "mocha": "^7.1.2",
+    "nodemon": "^2.0.4",
     "prettier": "^1.13.7"
   }
 }
