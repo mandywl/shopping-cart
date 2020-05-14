@@ -10,6 +10,16 @@ module.exports = {
       return res.status(500).json({ error: err.code });
     }
   },
+  getProductData: async function(req, res) {
+    try {
+      const id = req.body.id;
+      result = await Products.findOne({ where: { id } });
+      return res.json(result);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    }
+  },
   userLogin: async function(req, res) {
     try {
       return res.json(req.user);

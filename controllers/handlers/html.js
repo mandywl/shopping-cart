@@ -42,4 +42,22 @@ module.exports = {
       res.status(500).json({ error: err.code });
     }
   },
+  getProductPage: async function(req, res) {
+    try {
+      const id = req.params.id;
+      const result = await axios.get(`/products/${id}`);
+      console.log(result);
+      res.locals.metaTags = {
+        title: "signup",
+        description: "Signup here",
+        keywords: "signup",
+      };
+      res.render("index", { heading: result });
+
+      // res.render("signup", { signup: "signup" });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: err.code });
+    }
+  },
 };
