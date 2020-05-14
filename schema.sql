@@ -3,6 +3,7 @@ DROP DATABASE IF EXISTS eStoreDB;
 -- Creates the "eStoreDB" database --
 CREATE DATABASE eStoreDB;
 
+USE eStoreDB;
 CREATE TABLE users
 (
     id int NOT NULL AUTO_INCREMENT,
@@ -18,7 +19,7 @@ CREATE TABLE users
 CREATE TABLE products
 (
     id int NOT NULL AUTO_INCREMENT,
-	name varchar (255) NOT NULL,
+	product_name varchar (255) NOT NULL,
     description varchar (255) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     img blob, 
@@ -33,3 +34,8 @@ CREATE TABLE orders
     comment varchar (255) NOT NULL,
 	PRIMARY KEY (id)
 );
+
+
+INSERT INTO users (first_name, last_name, email, password, address) VALUES ('mandy', 'test', 'mandy.test@test.com', 'mypassword', '1 test street, Melbourne 3321');
+INSERT INTO products (product_name, description, price) VALUES ('cheese burger', 'home made cheese burger with chips and salads', '12.00');
+INSERT INTO orders (product_id, user_id, comment) VALUES (1, 1, 'Please text before delivery');
