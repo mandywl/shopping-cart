@@ -1,4 +1,5 @@
 require("dotenv").config();
+const axios = require("axios");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
@@ -9,6 +10,8 @@ const routes = require("./controllers/routes");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+
+axios.defaults.baseURL = `http://localhost:${PORT}/api/`;
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
