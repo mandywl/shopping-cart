@@ -5,7 +5,6 @@ const exphbs = require("express-handlebars");
 const session = require("express-session");
 const passport = require("./config/passport");
 
-const methodOverride = require("method-override");
 const routes = require("./controllers/routes");
 
 const PORT = process.env.PORT || 3000;
@@ -16,7 +15,6 @@ axios.defaults.baseURL = `http://localhost:${PORT}/api/`;
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(methodOverride("_method"));
 
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
