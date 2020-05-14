@@ -53,8 +53,6 @@ module.exports = {
         keywords: "signup",
       };
       res.render("index", { heading: result });
-
-      // res.render("signup", { signup: "signup" });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
