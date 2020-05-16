@@ -23,7 +23,7 @@ module.exports = {
         description: "Login here",
         keywords: "login",
       };
-      res.render("login", { login: "login" });
+      res.render("login");
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
@@ -36,7 +36,7 @@ module.exports = {
         description: "Signup here",
         keywords: "signup",
       };
-      res.render("signup", { signup: "signup" });
+      res.render("signup");
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });

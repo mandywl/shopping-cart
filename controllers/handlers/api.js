@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const { Users, Products } = require("../../models/models");
 
 module.exports = {
@@ -30,9 +31,12 @@ module.exports = {
   },
   userSignup: async function(req, res) {
     try {
-      const { email, password } = req.body;
+      const { email, first_name, last_name, address, password } = req.body;
       await Users.create({
         email,
+        first_name,
+        last_name,
+        address,
         password,
       });
       return res.redirect("/login");
