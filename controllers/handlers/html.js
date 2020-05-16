@@ -7,9 +7,10 @@ module.exports = {
         title: "Hello",
         description: "This is a discription",
         keywords: "here are some keywords",
+        noauth: req.noauth,
+        auth: req.auth,
       };
       const result = await axios.get("/products");
-      console.log("result is ", result.data);
       res.render("index", { products: result.data });
     } catch (err) {
       console.error(err);
@@ -22,8 +23,10 @@ module.exports = {
         title: "Login",
         description: "Login here",
         keywords: "login",
+        auth: "",
+        noauth: "hidden",
       };
-      res.render("login", { login: "login" });
+      res.render("login");
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
@@ -35,8 +38,10 @@ module.exports = {
         title: "signup",
         description: "Signup here",
         keywords: "signup",
+        auth: "",
+        noauth: "hidden",
       };
-      res.render("signup", { signup: "signup" });
+      res.render("signup");
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
@@ -46,12 +51,15 @@ module.exports = {
     try {
       const id = req.params.id;
       const result = await axios.get(`/products/${id}`);
+      const name = result.data.product_name;
       res.locals.metaTags = {
-        title: "signup",
-        description: "Signup here",
-        keywords: "signup",
+        title: name,
+        description: `${name}'s webpage`,
+        keywords: `${name}`,
+        noauth: req.noauth,
+        auth: req.auth,
       };
-      res.render("index", { productDetails: result.data });
+      res.render("index", { products: [result.data] });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
