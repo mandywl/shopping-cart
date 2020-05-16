@@ -9,6 +9,6 @@ const {
 router.route("/").get(checkAuthenticated, getIndex);
 router.route("/login").get(isNotAuthenticated, login);
 router.route("/signup").get(isNotAuthenticated, signup);
-router.route("/product/:id").get(getProductPage);
+router.route("/product/:id").get(checkAuthenticated, getProductPage);
 
 module.exports = router;
