@@ -1,6 +1,14 @@
 body {
   background-color: rgb(240, 240, 240);
 }
+
 .signup {
   margin-top: 30px;
+}
+.signup-action {
+  margin-top: 20px;
+}
+
+.acknow {
+  font-size: 0.7rem;
 }
