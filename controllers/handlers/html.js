@@ -9,8 +9,23 @@ module.exports = {
         keywords: "here are some keywords",
       };
       const result = await axios.get("/products");
-      console.log("result is ", result.data);
+      //console.log("result is ", result.data);
       res.render("index", { products: result.data });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: err.code });
+    }
+  },
+  getOrder: async function(req, res) {
+    try {
+      res.locals.metaTags = {
+        title: "Hello",
+        description: "This is a discription",
+        keywords: "here are some keywords",
+      };
+      const result = await axios.get("/orders");
+      console.log("result is ", result.data);
+      res.render("cart", { orders: result.data });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });

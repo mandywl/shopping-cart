@@ -1,9 +1,18 @@
-const { Users, Products } = require("../../models/models");
+const { Users, Products, Orders } = require("../../models/models");
 
 module.exports = {
   getApi: async function(req, res) {
     try {
       result = await Products.findAll();
+      return res.json(result);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    }
+  },
+  getOrder: async function(req, res) {
+    try {
+      result = await Orders.findAll();
       return res.json(result);
     } catch (err) {
       console.error(err);
