@@ -1,10 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const { getIndex, login, signup, getProductPage } = require("../handlers/html");
+const {
+  checkAuthenticated,
+  isNotAuthenticated,
+} = require("../../config/middleware/authenticate");
 
-router.route("/").get(getIndex);
-router.route("/login").get(login);
-router.route("/signup").get(signup);
+router.route("/").get(checkAuthenticated, getIndex);
+router.route("/login").get(isNotAuthenticated, login);
+router.route("/signup").get(isNotAuthenticated, signup);
 router.route("/product/:id").get(getProductPage);
 
 module.exports = router;

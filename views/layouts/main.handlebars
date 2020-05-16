@@ -38,23 +38,48 @@
 	<header>
 		<nav class="nav-extended">
 			<div class="nav-wrapper">
-				<a
-					href="#"
-					class="brand-logo"
-				>Logo</a>
-				<a
-					href="#"
-					data-target="mobile-demo"
-					class="sidenav-trigger"
-				><i class="material-icons">menu</i></a>
+
+				<div class="logo left">
+					<a
+						class="logo"
+						href="/"
+					>
+						<img
+							alt="logo"
+							src="assets/img/storeLogo.png"
+							width=40
+						/>
+					</a>
+				</div>
+
 				<ul
 					id="nav-mobile"
-					class="right hide-on-med-and-down"
+					class="right"
 				>
-					<li><a href="#">About us</a></li>
-					<li><a href="signup">Sign up</a></li>
-					<li><a href="login">Login</a></li>
-					<li><a href="#">Contact us</a></li>
+					<li>
+						<a
+							{{metaTags.auth}}
+							href="/signup"
+						>
+							<i class="material-icons">person_add</i>
+						</a>
+					</li>
+					<li>
+						<a
+							{{metaTags.auth}}
+							href="/login"
+						>
+							<i class="material-icons">vpn_key</i>
+						</a>
+					</li>
+					<li>
+						<a
+							{{metaTags.noauth}}
+							href="/logout"
+						>
+							<i class="material-icons">keyboard_return</i>
+						</a>
+					</li>
 				</ul>
 			</div>
 			<div class="nav-content">

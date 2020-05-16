@@ -7,6 +7,8 @@ module.exports = {
         title: "Hello",
         description: "This is a discription",
         keywords: "here are some keywords",
+        noauth: req.noauth,
+        auth: req.auth,
       };
       const result = await axios.get("/products");
       console.log("result is ", result.data);
@@ -22,6 +24,8 @@ module.exports = {
         title: "Login",
         description: "Login here",
         keywords: "login",
+        auth: "",
+        noauth: "hidden",
       };
       res.render("login");
     } catch (err) {
@@ -35,6 +39,8 @@ module.exports = {
         title: "signup",
         description: "Signup here",
         keywords: "signup",
+        auth: "",
+        noauth: "hidden",
       };
       res.render("signup");
     } catch (err) {
