@@ -12,13 +12,12 @@ module.exports = {
     return next();
   },
   checkAuthenticated: function(req, res, next) {
+    req.noauth = "hidden";
+    req.auth = "";
     if (req.user) {
       req.auth = "hidden";
       req.noauth = "";
-      return next();
     }
-    req.noauth = "hidden";
-    req.auth = "";
     return next();
   },
 };
