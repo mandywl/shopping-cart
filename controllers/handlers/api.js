@@ -12,7 +12,7 @@ module.exports = {
   },
   getProductData: async function(req, res) {
     try {
-      const id = req.body.id;
+      const id = req.params.id;
       result = await Products.findOne({ where: { id } });
       return res.json(result);
     } catch (err) {
