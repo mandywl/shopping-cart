@@ -17,16 +17,52 @@ module.exports = {
       res.status(500).json({ error: err.code });
     }
   },
+  getUser: async function(req, res) {
+    try {
+      res.locals.metaTags = {
+        title: "Hello",
+        description: "This is a discription",
+        keywords: "here are some keywords",
+        noauth: req.noauth,
+        auth: req.auth,
+      };
+      const result = await axios.get("/users");
+      //res.render("index", { products: result.data });
+      console.log(result.data);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: err.code });
+    }
+  },
+  getUserData: async function(req, res) {
+    try {
+      res.locals.metaTags = {
+        title: "Hello",
+        description: "This is a discription",
+        keywords: "here are some keywords",
+        noauth: req.noauth,
+        auth: req.auth,
+      };
+      const result = await axios.get("/user_data");
+      //res.render("index", { products: result.data });
+      console.log(result.data);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: err.code });
+    }
+  },
   getOrder: async function(req, res) {
     try {
       res.locals.metaTags = {
         title: "Hello",
         description: "This is a discription",
         keywords: "here are some keywords",
+        noauth: req.noauth,
+        auth: req.auth,
       };
-      const result = await axios.get("/orders");
-      console.log("result is ", result.data);
-      res.render("cart", { orders: result.data });
+      //const result = await axios.get("/orders");
+      //console.log("result is ", result.data);
+      res.render("cart");
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
