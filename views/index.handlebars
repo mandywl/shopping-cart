@@ -4,11 +4,17 @@
         {{#each products}}
         <div class="col s12 m3">
             <div class="card">
-                <div class="card-image">
-                    <img src="assets/img/{{img}}">
-                    <span class="card-title">{{product_name}}</span>
+                <div class="card-image waves-effect waves-block waves-light">
+                    <a href="/product/{{id}}">
+                        <img
+                            class="activator"
+                            src="/assets/img/{{img}}"
+                        >
+                    </a>
                 </div>
                 <div class="card-content">
+                    <span class="card-title">{{product_name}}</span>
+                    {{img}}
                     <p>${{price}}</p>
                     <p>{{description}}</p>
                 </div>
