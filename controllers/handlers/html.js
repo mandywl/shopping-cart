@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 module.exports = {
   getIndex: async function(req, res) {
     try {
@@ -6,7 +8,9 @@ module.exports = {
         description: "This is a discription",
         keywords: "here are some keywords",
       };
-      res.render("index", { heading: "hello" });
+      const result = await axios.get("/products");
+      console.log(result);
+      res.render("index", { heading: result });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
