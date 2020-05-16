@@ -9,8 +9,8 @@ module.exports = {
         keywords: "here are some keywords",
       };
       const result = await axios.get("/products");
-      console.log(result);
-      res.render("index", { heading: result });
+      console.log("result is ", result.data);
+      res.render("index", { products: result.data });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });

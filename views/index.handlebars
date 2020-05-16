@@ -1,5 +1,22 @@
 <div class="container">
-    {{#each productDetails}}
-    <h1>{{this}}</h1>
-    {{/each}}
+    <h1>Burgers Menu</h1>
+    <div class="row">
+        {{#each products}}
+        <div class="col s12 m3">
+            <div class="card">
+                <div class="card-image">
+                    <img src="assets/img/{{img}}">
+                    <span class="card-title">{{product_name}}</span>
+                </div>
+                <div class="card-content">
+                    <p>${{price}}</p>
+                    <p>{{description}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="login">Order</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>
