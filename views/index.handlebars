@@ -18,10 +18,10 @@
                     <p>{{description}}</p>
                 </div>
                 <div class="card-action">
-                    <a
-                        {{!-- href="/api/order/{{id}}" --}}
-                        onclick="orderItem({{id}})"
-                    >Order</a>
+                    <a onclick="orderItem({{id}},'{{product_name}}')">
+                        Order
+                    </a>
+
                 </div>
             </div>
         </div>

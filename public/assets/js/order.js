@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-const orderItem = async (id) => {
+const orderItem = async (id, name) => {
   try {
     await $.get(`/api/order/${id}`);
     M.toast({
-      html: "Item added to cart",
+      html: `${name} added to cart`,
       outDuration: 5000,
       classes: "rounded",
     });
