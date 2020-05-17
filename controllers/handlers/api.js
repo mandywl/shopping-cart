@@ -11,30 +11,6 @@ module.exports = {
       return res.status(500).json({ error: err.code });
     }
   },
-  getUser: async function(req, res) {
-    try {
-      result = await Users.findAll();
-      return res.json(result);
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({ error: err.code });
-    }
-  },
-  getUserData: async function(req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        id: req.user.id,
-        first_name: req.user.first_name,
-        email: req.user.email,
-        id: req.user.id,
-      });
-    }
-  },
   getOrder: async function(req, res) {
     try {
       result = await Orders.findAll();
