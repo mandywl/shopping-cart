@@ -7,15 +7,15 @@
                 <div class="card-image waves-effect waves-block waves-light">
                     <a href="/product/{{id}}">
                         <img
-                            class="activator"
+                            class="activator img"
                             src="/assets/img/{{img}}"
                         >
                     </a>
                 </div>
                 <div class="card-content">
-                    <span class="card-title">{{product_name}}</span>
+                    <span class="card-title truncate">{{product_name}}</span>
                     <p>${{price}}</p>
-                    <p>{{description}}</p>
+                    <p class="trunc">{{description}}</p>
                 </div>
                 <div class="card-action">
                     <a onclick="orderItem({{id}},'{{product_name}}')">
