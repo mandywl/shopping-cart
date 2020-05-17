@@ -23,12 +23,13 @@ module.exports = {
         title: "Hello",
         description: "This is a discription",
         keywords: "here are some keywords",
-        noauth: req.noauth,
-        auth: req.auth,
+        noauth: "",
+        auth: "hidden",
       };
       //const result = await axios.get("/orders");
       //console.log("result is ", result.data);
-      res.render("cart");
+      console.log("user is ", req.user);
+      res.render("cart", { orders: req.user.first_name });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
