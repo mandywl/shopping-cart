@@ -2,9 +2,12 @@
 const orderItem = async (id) => {
   try {
     await $.get(`/api/order/${id}`);
-    console.log("succes!");
-    // window.location.replace("/");
+    M.toast({
+      html: "Item added to cart",
+      outDuration: 5000,
+      classes: "rounded",
+    });
   } catch (err) {
-    console.log(err);
+    window.location.replace("/login");
   }
 };
