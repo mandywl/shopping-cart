@@ -16,3 +16,20 @@ body {
 .logo {
   margin: 10px 0 0 10px;
 }
+
+.img {
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-content {
+  height: 150px;
+}
+
+.trunc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

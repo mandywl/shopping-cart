@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 const { Sequelize, sequelize } = require("../config/connectionDb");
+sequelize.sync();
 
 module.exports = {
   Users: sequelize.define(
@@ -55,18 +56,18 @@ module.exports = {
     },
     { timestamps: false }
   ),
-  Orders: sequelize.define("orders", {
-    product_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+  Orders: sequelize.define(
+    "orders",
+    {
+      product_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        default: false,
+      },
     },
-    user_id: {
-      type: Sequelize.INTEGER,
-      default: false,
-    },
-    comment: {
-      type: Sequelize.STRING,
-      default: false,
-    },
-  }),
+    { timestamps: false }
+  ),
 };

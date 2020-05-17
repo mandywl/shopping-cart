@@ -3,19 +3,25 @@
     <div class="row">
         {{#each products}}
         <div class="col s12 m3">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
+            <div class="card hoverable">
+                <div class="card-image hoverable waves-effect waves-block waves-light">
                     <a href="/product/{{id}}">
-                        <img class="activator" src="/assets/img/{{img}}">
+                        <img
+                            class="activator img"
+                            src="/assets/img/{{img}}"
+                        >
                     </a>
                 </div>
                 <div class="card-content">
-                    <span class="card-title">{{product_name}}</span>
+                    <span class="card-title truncate">{{product_name}}</span>
                     <p>${{price}}</p>
-                    <p>{{description}}</p>
+                    <p class="trunc">{{description}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="login">Order</a>
+                    <a onclick="orderItem({{id}},'{{product_name}}')">
+                        Order
+                    </a>
+
                 </div>
             </div>
         </div>
