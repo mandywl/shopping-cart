@@ -33,3 +33,27 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+.order-name {
+  font-style: bold;
+  font-size: 1.2rem;
+}
+
+.order-description {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: grey;
+}
+
+.mailto {
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.mailto-detail {
+  font-size: 1.5rem;
+}
+.mailto-name {
+  font-size: 1.2rem;
+  word-wrap: break-word;
+}
