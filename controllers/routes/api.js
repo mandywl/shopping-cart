@@ -3,6 +3,7 @@ const router = express.Router();
 var passport = require("../../config/passport");
 const {
   getApi,
+  getOrder,
   userLogin,
   userSignup,
   userLogout,
@@ -10,6 +11,7 @@ const {
 } = require("../handlers/api");
 
 router.route("/api/products").get(getApi);
+router.route("/api/orders").get(getOrder);
 router.route("/api/products/:id").get(getProductData);
 router.route("/api/login").post(passport.authenticate("local"), userLogin);
 router.route("/api/signup").post(userSignup);

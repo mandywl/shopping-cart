@@ -17,6 +17,23 @@ module.exports = {
       res.status(500).json({ error: err.code });
     }
   },
+  getOrder: async function(req, res) {
+    try {
+      res.locals.metaTags = {
+        title: "Hello",
+        description: "This is a discription",
+        keywords: "here are some keywords",
+        noauth: req.noauth,
+        auth: req.auth,
+      };
+      //const result = await axios.get("/orders");
+      //console.log("result is ", result.data);
+      res.render("cart");
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: err.code });
+    }
+  },
   login: async function(req, res) {
     try {
       res.locals.metaTags = {
