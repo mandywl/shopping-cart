@@ -21,6 +21,23 @@ body {
   height: 150px;
   object-fit: cover;
 }
+.prod-img {
+  width: 100%;
+}
+
+.product-container {
+  padding: 15px 0 0 15px;
+  font-size: 1.2rem;
+}
+
+.price {
+  font-size: 2rem;
+}
+
+.add-button {
+  bottom: 27px;
+  right: 20px;
+}
 
 .card-content {
   height: 150px;

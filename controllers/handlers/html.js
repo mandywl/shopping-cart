@@ -59,7 +59,7 @@ module.exports = {
         noauth: req.noauth,
         auth: req.auth,
       };
-      res.render("index", { products: [result.data] });
+      res.render("product", { products: [result.data] });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });
