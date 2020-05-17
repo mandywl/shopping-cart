@@ -2,21 +2,47 @@
     <div class="card-panel z-depth-3 signup">
         <div class="container">
             <div class="center signup">
-                <img alt="logo" src="/assets/img/storeLogo.png" width=75 />
+                <img
+                    alt="logo"
+                    src="/assets/img/storeLogo.png"
+                    width=75
+                />
                 <h2>Login</h2>
             </div>
             <form class="login">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="email-input" placeholder="example@email.com">
+                <div class="input-field">
+
+
+                    <input
+                        type="email"
+                        class="form-control validate"
+                        id="email-input"
+                        required
+                    >
+                    <label for="email-input">Email</label>
+
+                    <span
+                        class="helper-text"
+                        data-error="Wrong email format, please try again."
+                        data-success="Looks good!"
+                    >Helper text</span>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="password-input" placeholder="Password">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password-input"
+                        placeholder="Password"
+                        required
+                    >
                 </div>
                 <div class="signup-action center">
-                    <button type="submit" class="btn btn-default">Log in</button>
+                    <button
+                        type="submit"
+                        class="btn btn-default"
+                    >Log in</button>
                     <br />
                     <p>Or sign up <a href="/signup">here</a></p>
                 </div>
@@ -24,8 +50,12 @@
         </div>
 
 
-        <div class="acknow right">Icons made by <a href="https://www.flaticon.com/authors/vitaly-gorbachev"
-                title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/"
-                title="Flaticon">www.flaticon.com</a></div>
+        <div class="acknow right">Icons made by <a
+                href="https://www.flaticon.com/authors/vitaly-gorbachev"
+                title="Vitaly Gorbachev"
+            >Vitaly Gorbachev</a> from <a
+                href="https://www.flaticon.com/"
+                title="Flaticon"
+            >www.flaticon.com</a></div>
     </div>
 </div>
