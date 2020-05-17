@@ -8,7 +8,8 @@
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "theme": "sass util/sass/materialize.scss public/assets/css/materialize.css"
   },
   "keywords": [],
   "author": "",
