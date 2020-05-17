@@ -3,7 +3,7 @@ const { promisify } = require("util");
 const fs = require("fs");
 const { Users, Products, Orders } = require("../../models/models");
 const csvName = "product-list.csv";
-const productList = `models/${csvName}`;
+const productList = `util/${csvName}`;
 
 const readFileAsync = promisify(fs.readFile);
 
