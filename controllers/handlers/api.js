@@ -35,7 +35,7 @@ fs.watchFile(productList, { interval: 1000 }, async () => {
 module.exports = {
   getApi: async function(req, res) {
     try {
-      result = await Products.findAll();
+      const result = await Products.findAll();
       return res.json(result);
     } catch (err) {
       console.error(err);
@@ -44,7 +44,20 @@ module.exports = {
   },
   getOrder: async function(req, res) {
     try {
-      result = await Orders.findAll();
+      const result = await Orders.findAll();
+      return res.json(result);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    }
+  },
+  orderItem: async function(req, res) {
+    try {
+      const values = {
+        product_id: req.params.id,
+        user_id: req.user.id,
+      };
+      const result = await Orders.create(values);
       return res.json(result);
     } catch (err) {
       console.error(err);

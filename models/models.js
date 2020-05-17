@@ -55,18 +55,18 @@ module.exports = {
     },
     { timestamps: false }
   ),
-  Orders: sequelize.define("orders", {
-    product_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
+  Orders: sequelize.define(
+    "orders",
+    {
+      product_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        default: false,
+      },
     },
-    user_id: {
-      type: Sequelize.INTEGER,
-      default: false,
-    },
-    comment: {
-      type: Sequelize.STRING,
-      default: false,
-    },
-  }),
+    { timestamps: false }
+  ),
 };

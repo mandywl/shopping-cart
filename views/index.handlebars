@@ -6,7 +6,10 @@
             <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
                     <a href="/product/{{id}}">
-                        <img class="activator" src="/assets/img/{{img}}">
+                        <img
+                            class="activator"
+                            src="/assets/img/{{img}}"
+                        >
                     </a>
                 </div>
                 <div class="card-content">
@@ -15,7 +18,7 @@
                     <p>{{description}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="login">Order</a>
+                    <a onclick="orderItem({{id}})">Order</a>
                 </div>
             </div>
         </div>
