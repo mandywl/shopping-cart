@@ -10,58 +10,66 @@
                 <h2>Signup</h2>
             </div>
             <form class="signup">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                <div class="input-field">
+
+
                     <input
                         type="email"
-                        class="form-control"
+                        class="form-control validate"
                         id="email-input"
-                        placeholder="example@email.com"
+                        required
                     >
+                    <label for="email-input">Email</label>
+
+                    <span
+                        class="helper-text"
+                        data-error="Wrong email format, please try again."
+                        data-success="Looks good!"
+                    >Enter an email address</span>
                 </div>
-                <div class="form-group">
+                <div class="input-field">
                     <label for="exampleInputfirstname1">First name</label>
                     <input
                         type="text"
                         class="form-control"
                         id="first-name-input"
-                        placeholder="J."
+                        required
                     >
                 </div>
-                <div class="form-group">
+                <div class="input-field">
                     <label for="exampleInputlast_name1">Last name</label>
                     <input
                         type="text"
                         class="form-control"
                         id="last-name-input"
-                        placeholder="Doe"
+                        required
                     >
                 </div>
-                <div class="form-group">
+                <div class="input-field">
                     <label for="exampleInputaddress1">Address</label>
                     <input
                         type="text"
                         class="form-control"
                         id="address-input"
-                        placeholder="123 Fake St"
+                        required
                     >
                 </div>
-                <div class="form-group">
+                <div class="input-field">
                     <label for="exampleInputPassword1">Password</label>
                     <input
                         type="password"
                         class="form-control"
                         id="password-input"
-                        placeholder="Password"
+                        required
                     >
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputconfrim_Password1">confrim_Password</label>
+                <div class="input-field">
+                    <label for="confirm-password-input">Confirm password</label>
                     <input
                         type="password"
                         class="form-control"
                         id="confirm-password-input"
-                        placeholder="Confrim password"
+                        required
                     >
                 </div>
                 <div class="signup-action center">
