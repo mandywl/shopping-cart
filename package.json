@@ -2,13 +2,13 @@
   "name": "e-store-template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest; npm run lint",
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "watch": "nodemon server.js",
+    "watch": "nodemon --watch util -e \"npm run theme; npm start\"",
     "theme": "sass util/sass/materialize.scss public/assets/css/materialize.css"
   },
   "keywords": [],
