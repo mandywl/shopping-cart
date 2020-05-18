@@ -79,8 +79,8 @@
 						>
 							<i
 								class="material-icons tooltipped"
-								data-position="left"
-								data-tooltip="Log in"
+								data-position="bottom"
+								data-tooltip="Login"
 							>vpn_key</i>
 						</a>
 					</li>
@@ -104,7 +104,7 @@
 							<i
 								class="material-icons tooltipped"
 								data-position="bottom"
-								data-tooltip="Log out"
+								data-tooltip="Logout"
 							>keyboard_return</i>
 						</a>
 					</li>
@@ -112,13 +112,18 @@
 			</div>
 			<div class="nav-content">
 				<ul class="tabs tabs-transparent">
+					<li class="tab"><a onclick="window.location.replace('/')">All</a></li>
+					{{#each metaTags.categories}}
 					<li class="tab"><a
-							class="active"
-							href="/"
-						>Burgers</a></li>
-					<li class="tab"><a href="/">Drinks</a></li>
+							class="{{active}}"
+							onclick="handleTab('{{category}}')"
+						>{{category}}</a></li>
+
+
+					{{/each}}
 				</ul>
 			</div>
+
 		</nav>
 	</header>
 	{{{ body }}}
@@ -128,6 +133,7 @@
 	<script src="/assets/js/signup.js"></script>
 	<script src="/assets/js/materialize.js"></script>
 	<script src="/assets/js/login.js"></script>
+	<script src="/assets/js/main.js"></script>
 	<script src="/assets/js/order.js"></script>
 </body>
 

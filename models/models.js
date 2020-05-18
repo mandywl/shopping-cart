@@ -54,6 +54,12 @@ module.exports = {
       img: {
         type: Sequelize.STRING,
         allowNull: false,
+        default: "placeholder.png",
+      },
+      category: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        default: "item",
       },
     },
     { timestamps: false }

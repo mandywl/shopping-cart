@@ -5,8 +5,7 @@
 
 USE eStoreDB;
 
-select * from orders;
-
+select * from products;
 -- CREATE TABLE users
 -- (
 --     id int NOT NULL AUTO_INCREMENT,

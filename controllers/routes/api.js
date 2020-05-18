@@ -10,6 +10,7 @@ const {
   userLogout,
   getProductData,
   checkoutOrder,
+  getCategories,
 } = require("../handlers/api");
 
 const {
@@ -18,6 +19,7 @@ const {
 } = require("../../config/middleware/authenticate");
 
 router.route("/api/products").get(getApi);
+router.route("/api/categories").get(getCategories);
 router
   .route("/orders")
   .get(isAuthenticated, getOrder)

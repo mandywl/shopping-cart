@@ -1,5 +1,16 @@
-id, product_name, description, price, img
-1,cheese burger,home made cheese burger with chips and salads,12.00,cheeseBurger.jpg
-2,Chicken burger,home made Chicken burger with chips and salads,14.00,chickenBurger.jpg
-3,name,description,1,placeholder.png
-4,name,description,2,placeholder.png
+id, product_name, description, price, img, category
+1,cheese burger,home made cheese burger with chips and salads,12.00,cheeseBurger.jpg,burger
+2,Chicken burger,home made Chicken burger with chips and salads,14.00,chickenBurger.jpg,burger
+3,name,description,1,placeholder.png,item
+4,name,description,2,placeholder.png,item
+5,name,description,3,placeholder.png,item
+6,name,description,2,placeholder.png,item
+7,name,description,2,placeholder.png,item
+8,name,description,2,placeholder.png,item
+9,name,description,2,placeholder.png,item
+10,name,description,2,placeholder.png,item
+11,name,description,2,placeholder.png,item
+12,name,description,2,placeholder.png,item
+13,name,description,2,placeholder.png,item
+14,name,description,2,placeholder.png,item
+15,name,description,2,placeholder.png,item

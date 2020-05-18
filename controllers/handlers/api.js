@@ -16,8 +16,14 @@ fs.watchFile(productList, { interval: 1000 }, async () => {
     data.shift();
     data.forEach(async (row) => {
       try {
-        const [id, product_name, description, price, img] = row;
-        const productValues = { product_name, description, price, img };
+        const [id, product_name, description, price, img, category] = row;
+        const productValues = {
+          product_name,
+          description,
+          price,
+          img,
+          category,
+        };
         const product = await Products.findOne({ where: { id: id } });
         if (product) {
           product.update(productValues);
@@ -39,9 +45,33 @@ Orders.belongsTo(Users);
 Orders.belongsTo(Products);
 
 module.exports = {
-  getApi: async function(req, res) {
+  getCategories: async (req, res) => {
     try {
       const result = await Products.findAll();
+      const categories = result.reduce((acc, current) => {
+        const x = acc.find((item) => item.category === current.category);
+        if (!x) {
+          const temp = { category: current.category, count: 1 };
+          return acc.concat([temp]);
+        } else {
+          x.count++;
+          return acc;
+        }
+      }, []);
+      return res.json(categories);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getApi: async function(req, res) {
+    try {
+      const { offset, limit } = req.query;
+      const query = {};
+      query.offset = parseInt(offset);
+      query.limit = parseInt(limit);
+      query.where =
+        req.query.category === "all" ? {} : { category: req.query.category };
+      const result = await Products.findAll(query);
       return res.json(result);
     } catch (err) {
       console.error(err);
