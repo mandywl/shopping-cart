@@ -1,9 +1,12 @@
 -- Drops the eStoreDB if it exists currently --
-DROP DATABASE IF EXISTS eStoreDB;
--- Creates the "eStoreDB" database --
-CREATE DATABASE eStoreDB;
+-- DROP DATABASE IF EXISTS eStoreDB;
+-- -- Creates the "eStoreDB" database --
+-- CREATE DATABASE eStoreDB;
 
 USE eStoreDB;
+
+select * from orders;
+
 -- CREATE TABLE users
 -- (
 --     id int NOT NULL AUTO_INCREMENT,

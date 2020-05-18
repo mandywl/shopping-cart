@@ -6,6 +6,7 @@ module.exports = {
   Users: sequelize.define(
     "users",
     {
+      id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
       first_name: {
         type: Sequelize.STRING,
         allowNull: true,
@@ -37,6 +38,7 @@ module.exports = {
   Products: sequelize.define(
     "products",
     {
+      id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
       product_name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -59,14 +61,7 @@ module.exports = {
   Orders: sequelize.define(
     "orders",
     {
-      product_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      user_id: {
-        type: Sequelize.INTEGER,
-        default: false,
-      },
+      id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     },
     { timestamps: false }
   ),

@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="card-panel z-depth-3 signup">
+        {{#each products}}
+        <h1>{{product_name}}</h1>
+        <img
+            class="prod-img"
+            src="/assets/img/{{img}}"
+        >
+        <a
+            class="btn-floating secondary right add-button"
+            onclick="orderItem({{id}},'{{product_name}}')"
+        ><i class="material-icons">add</i></a>
+        <div class="product-container">
+            <span class="price pink-text">${{price}}</span>
+
+        </div>
+        <div class="product-container">
+            <span>{{description}}</span>
+
+        </div>
+        {{/each}}
+
+
+    </div>
+
+</div>
