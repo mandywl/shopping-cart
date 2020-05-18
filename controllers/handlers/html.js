@@ -25,15 +25,15 @@ module.exports = {
         temp.active = i === parseInt(page) ? "active" : "";
         pages.push(temp);
       }
-      count = res.locals.metaTags = {
-        title: "Hello!",
+      category = category.charAt(0).toUpperCase() + category.slice(1);
+      res.locals.metaTags = {
+        title: category,
         description: "This is a discription",
         keywords: "here are some keywords",
         noauth: req.noauth,
         auth: req.auth,
         categories,
       };
-      category = category.charAt(0).toUpperCase() + category.slice(1);
       res.render("index", { pages, category, products: results.data });
     } catch (err) {
       console.error(err);
