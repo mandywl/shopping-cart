@@ -9,6 +9,7 @@ const {
   userSignup,
   userLogout,
   getProductData,
+  checkoutOrder,
 } = require("../handlers/api");
 
 const {
@@ -17,7 +18,10 @@ const {
 } = require("../../config/middleware/authenticate");
 
 router.route("/api/products").get(getApi);
-router.route("/api/orders").get(isAuthenticated, getOrder);
+router
+  .route("/orders")
+  .get(isAuthenticated, getOrder)
+  .delete(isAuthenticated, checkoutOrder);
 router.route("/api/order/:id").get(apiAuthenticated, orderItem);
 router.route("/api/products/:id").get(getProductData);
 router.route("/api/login").post(passport.authenticate("local"), userLogin);

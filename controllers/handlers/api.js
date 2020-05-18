@@ -4,6 +4,7 @@ const fs = require("fs");
 const { Users, Products, Orders } = require("../../models/models");
 const csvName = "product-list.csv";
 const productList = `util/${csvName}`;
+const { Sequelize } = require("../../config/connectionDb");
 
 const readFileAsync = promisify(fs.readFile);
 
@@ -32,6 +33,11 @@ fs.watchFile(productList, { interval: 1000 }, async () => {
   }
 });
 
+Users.hasMany(Orders);
+Products.hasMany(Orders);
+Orders.belongsTo(Users);
+Orders.belongsTo(Products);
+
 module.exports = {
   getApi: async function(req, res) {
     try {
@@ -44,8 +50,50 @@ module.exports = {
   },
   getOrder: async function(req, res) {
     try {
-      const result = await Orders.findAll();
-      return res.json(result);
+      res.locals.metaTags = {
+        title: "Hello",
+        description: "This is a discription",
+        keywords: "here are some keywords",
+        noauth: "",
+        auth: "hidden",
+      };
+      const results = await Orders.findAll({
+        where: { userId: req.user.id },
+        include: [
+          {
+            model: Products,
+            where: { id: Sequelize.col("orders.productId") },
+          },
+        ],
+      });
+      const orders = results
+        .map((res) => res.dataValues.product.dataValues)
+        .reduce((acc, current) => {
+          const x = acc.find((item) => item.id === current.id);
+          if (!x) {
+            current.qty = 1;
+            current.subtotal = current.price;
+            return acc.concat([current]);
+          } else {
+            x.qty++;
+            x.subtotal = (x.qty * x.price).toFixed(2);
+            return acc;
+          }
+        }, []);
+      const total = orders
+        .reduce((acc, curr) => {
+          return acc + parseFloat(curr.subtotal);
+        }, 0)
+        .toFixed(2);
+
+      const { first_name, last_name, address } = req.user;
+      return res.render("cart", {
+        orders,
+        total,
+        first_name,
+        last_name,
+        address,
+      });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ error: err.code });
@@ -54,8 +102,8 @@ module.exports = {
   orderItem: async function(req, res) {
     try {
       const values = {
-        product_id: req.params.id,
-        user_id: req.user.id,
+        productId: req.params.id,
+        userId: req.user.id,
       };
       const result = await Orders.create(values);
       return res.json(result);
@@ -102,6 +150,15 @@ module.exports = {
     try {
       req.logout();
       return res.redirect("/");
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    }
+  },
+  checkoutOrder: async function(req, res) {
+    try {
+      const result = await Orders.destroy({ where: { userId: req.user.id } });
+      return res.json(result);
     } catch (err) {
       console.error(err);
       return res.status(500).json({ error: err.code });
