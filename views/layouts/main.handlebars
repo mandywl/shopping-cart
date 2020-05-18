@@ -4,15 +4,33 @@
 <head>
 	<meta charset="UTF-8">
 	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet"
+	>
 
 	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="/assets/css/materialize.css">
-	<link rel="stylesheet" href="/assets/css/styles.css">
+	<link
+		rel="stylesheet"
+		href="/assets/css/materialize.css"
+	>
+	<link
+		rel="stylesheet"
+		href="/assets/css/styles.css"
+	>
 	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="{{metaTags.description}}">
-	<meta name="keywords" content="{{metaTags.keywords}}">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0"
+	/>
+	<meta
+		name="description"
+		content="{{metaTags.description}}"
+	>
+	<meta
+		name="keywords"
+		content="{{metaTags.keywords}}"
+	>
 	<title>{{metaTags.title}}</title>
 </head>
 
@@ -22,42 +40,81 @@
 			<div class="nav-wrapper">
 
 				<div class="logo left">
-					<a class="logo" href="/">
-						<img class="tooltipped" data-position="right" data-tooltip="Home" alt="logo"
-							src="/assets/img/storeLogo.png" width=40 />
+					<a
+						class="logo"
+						href="/"
+					>
+						<img
+							class="tooltipped"
+							data-position="right"
+							data-tooltip="Home"
+							alt="logo"
+							src="/assets/img/storeLogo.png"
+							width=40
+						/>
 					</a>
 				</div>
 
-				<ul id="nav-mobile" class="right">
+				<ul
+					id="nav-mobile"
+					class="right"
+				>
 					<li>
-						<a {{metaTags.auth}} href="/signup">
-							<i class="material-icons tooltipped" data-position="bottom"
-								data-tooltip="Sign up">person_add</i>
-						</a>
-						{{!-- <a class="btn tooltipped" data-position="bottom" data-tooltip="I am a tooltip">Hover me!</a> --}}
-					</li>
-					<li>
-						<a {{metaTags.auth}} href="/login">
-							<i class="material-icons tooltipped" data-position="left" data-tooltip="Log in">vpn_key</i>
-						</a>
-					</li>
-					<li>
-						<a {{metaTags.noauth}} href="/orders">
-							<i class="material-icons tooltipped" data-position="bottom"
-								data-tooltip="Cart">shopping_cart</i>
+						<a
+							{{metaTags.auth}}
+							href="/signup"
+						>
+							<i
+								class="material-icons tooltipped"
+								data-position="bottom"
+								data-tooltip="Sign up"
+							>person_add</i>
 						</a>
 					</li>
 					<li>
-						<a {{metaTags.noauth}} href="/logout">
-							<i class="material-icons tooltipped" data-position="bottom"
-								data-tooltip="Log out">keyboard_return</i>
+						<a
+							{{metaTags.auth}}
+							href="/login"
+						>
+							<i
+								class="material-icons tooltipped"
+								data-position="left"
+								data-tooltip="Log in"
+							>vpn_key</i>
+						</a>
+					</li>
+					<li>
+						<a
+							{{metaTags.noauth}}
+							href="/orders"
+						>
+							<i
+								class="material-icons tooltipped"
+								data-position="bottom"
+								data-tooltip="Cart"
+							>shopping_cart</i>
+						</a>
+					</li>
+					<li>
+						<a
+							{{metaTags.noauth}}
+							href="/logout"
+						>
+							<i
+								class="material-icons tooltipped"
+								data-position="bottom"
+								data-tooltip="Log out"
+							>keyboard_return</i>
 						</a>
 					</li>
 				</ul>
 			</div>
 			<div class="nav-content">
 				<ul class="tabs tabs-transparent">
-					<li class="tab"><a class="active" href="/">Burgers</a></li>
+					<li class="tab"><a
+							class="active"
+							href="/"
+						>Burgers</a></li>
 					<li class="tab"><a href="/">Drinks</a></li>
 				</ul>
 			</div>
@@ -67,88 +124,17 @@
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgOH4myK4L5186othubJ2jxoDO3OCww-o&signed_in=true&libraries=places&callback=initAutocomplete"
-		async defer></script>
+		async
+		defer
+	></script>
 	<script src="/assets/js/signup.js"></script>
 	<script src="/assets/js/materialize.js"></script>
 	<script src="/assets/js/login.js"></script>
 	<script src="/assets/js/order.js"></script>
-	<script>
-		// This example displays an address form, using the autocomplete feature
-		// of the Google Places API to help users fill in the information.
-
-		var autocomplete;
-		var componentForm = {
-			street_number: 'short_name',
-			route: 'long_name',
-			locality: 'long_name',
-			administrative_area_level_1: 'short_name',
-			country: 'long_name',
-			postal_code: 'short_name'
-		};
-
-		function initAutocomplete() {
-			// Create the autocomplete object, restricting the search to geographical
-			// location types.
-			autocomplete = new google.maps.places.Autocomplete(
-      /** @type {!HTMLInputElement} */(document.getElementById('address-input')),
-				{ types: ['geocode'] });
-
-			// When the user selects an address from the dropdown, populate the address
-			// fields in the form.
-			autocomplete.addListener('place_changed', fillInAddress);
-		}
-
-		// [START region_fillform]
-		function fillInAddress() {
-			// Get the place details from the autocomplete object.
-			var place = autocomplete.getPlace();
-			//console.log(place);
-
-			for (var component in componentForm) {
-				document.getElementById(component).value = '';
-				document.getElementById(component).disabled = false;
-			}
-			document.getElementById('save').disabled = false;
-			// Get each component of the address from the place details
-			// and fill the corresponding field on the form.
-			for (var i = 0; i < place.address_components.length; i++) {
-				var addressType = place.address_components[i].types[0];
-				if (componentForm[addressType]) {
-					var val = place.address_components[i][componentForm[addressType]];
-					document.getElementById(addressType).value = val;
-				}
-			}
-			if (place.geometry.location.H && place.geometry.location.L) {
-				document.getElementById("H").value = place.geometry.location.H;
-				document.getElementById("L").value = place.geometry.location.L;
-				document.getElementById("addr").value = place.formatted_address;
-			}
-
-		}
-		// [END region_fillform]
-
-		// [START region_geolocation]
-		// Bias the autocomplete object to the user's geographical location,
-		// as supplied by the browser's 'navigator.geolocation' object.
-		function geolocate() {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(function (position) {
-					var geolocation = {
-						lat: position.coords.latitude,
-						lng: position.coords.longitude
-					};
-					var circle = new google.maps.Circle({
-						center: geolocation,
-						radius: position.coords.accuracy
-					});
-					autocomplete.setBounds(circle.getBounds());
-				});
-			}
-		}
-        // [END region_geolocation]
-	</script>
+	<script src="/assets/js/address-autocomplete.js"></script>
 </body>
 
 </html>

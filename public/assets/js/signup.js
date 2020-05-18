@@ -16,6 +16,7 @@ $(document).ready(function() {
   const addressInput = $("input#address-input");
   const passwordInput = $("input#password-input");
   const confirmPasswordInput = $("input#confirm-password-input");
+  addressInput.attr("placeholder", "").blur();
 
   signUpForm.on("submit", function(event) {
     event.preventDefault();
@@ -43,5 +44,6 @@ $(document).ready(function() {
     addressInput.val("");
     passwordInput.val("");
     confirmPasswordInput.val("");
+    addressInput.attr("placeholder", "").blur();
   });
 });
