@@ -10,8 +10,24 @@ module.exports = {
         noauth: req.noauth,
         auth: req.auth,
       };
+      const getCurrency = req.query.currency
+        ? `/currency?currency=${req.query.currency}`
+        : "/currency";
+      let currencies = await axios.get(getCurrency);
+      currencies = currencies.data;
       const result = await axios.get("/products");
-      res.render("index", { products: result.data });
+      const products = result.data.map((product) => {
+        product.price =
+          currencies.symbol + `${(product.price * currencies.rate).toFixed(2)}`;
+        return product;
+      });
+      const choices = Object.keys(currencies.list).filter(
+        (key) => key !== currencies.currency
+      );
+      const symbol = currencies.symbol;
+      choices.unshift(currencies.currency);
+
+      res.render("index", { products, choices, symbol });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });

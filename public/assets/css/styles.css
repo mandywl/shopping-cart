@@ -13,6 +13,10 @@ body {
   font-size: 0.7rem;
 }
 
+.curr-trigger {
+  font-size: 1.4rem;
+}
+
 .logo {
   margin: 10px 0 0 10px;
 }
@@ -32,6 +36,9 @@ body {
 
 .price {
   font-size: 2rem;
+}
+.card-price {
+  font-size: 1.2rem;
 }
 
 .add-button {

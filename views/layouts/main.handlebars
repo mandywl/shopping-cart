@@ -46,7 +46,7 @@
 					>
 						<img
 							class="tooltipped"
-							data-position="right"
+							data-position="bottom"
 							data-tooltip="Home"
 							alt="logo"
 							src="/assets/img/storeLogo.png"
@@ -60,6 +60,27 @@
 					class="right"
 				>
 					<li>
+
+						<a
+							data-position="bottom"
+							data-tooltip="Currency"
+							class='dropdown-trigger tooltipped'
+							href='#'
+							data-target='dropdown1'
+						><span class="curr-trigger">{{{symbol}}}</span></a>
+
+						<ul
+							id='dropdown1'
+							class='dropdown-content'
+						>
+							{{#each choices}}
+							<li><a href="/?currency={{this}}">{{this}}</a></li>
+							{{/each}}
+						</ul>
+
+					</li>
+					<li>
+
 						<a
 							{{metaTags.auth}}
 							href="/signup"
@@ -67,10 +88,9 @@
 							<i
 								class="material-icons tooltipped"
 								data-position="bottom"
-								data-tooltip="Sign up"
+								data-tooltip="Signup"
 							>person_add</i>
 						</a>
-						{{!-- <a class="btn tooltipped" data-position="bottom" data-tooltip="I am a tooltip">Hover me!</a> --}}
 					</li>
 					<li>
 						<a
@@ -79,8 +99,8 @@
 						>
 							<i
 								class="material-icons tooltipped"
-								data-position="left"
-								data-tooltip="Log in"
+								data-position="bottom"
+								data-tooltip="Login"
 							>vpn_key</i>
 						</a>
 					</li>
@@ -120,15 +140,22 @@
 				</ul>
 			</div>
 		</nav>
+
+
 	</header>
+
+
 	{{{ body }}}
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 	<script src="/assets/js/signup.js"></script>
 	<script src="/assets/js/materialize.js"></script>
 	<script src="/assets/js/login.js"></script>
 	<script src="/assets/js/order.js"></script>
+	<script src="/assets/js/address-autocomplete.js"></script>
 </body>
 
 </html>
