@@ -1,21 +1,32 @@
+/* eslint-disable indent */
 const axios = require("axios");
 
-const handleCurrency = (currencies, products) => {
-  return products.data.map((product) => {
+const prodMulIn = (currencies, productsIn) => {
+  return productsIn.data.map((product) => {
     product.price =
       currencies.symbol + `${(product.price * currencies.rate).toFixed(2)}`;
     return product;
   });
 };
 
-const handlePages = (
-  page,
-  limit,
-  total,
-  categoriesIn,
-  currencies,
-  category
-) => {
+const handleCurrency = (currencies, productsIn) => {
+  const products =
+    productsIn.data.length > 1
+      ? prodMulIn(currencies, productsIn)
+      : {
+          ...productsIn,
+          price:
+            currencies.symbol +
+            `${(productsIn.price * currencies.rate).toFixed(2)}`,
+        };
+  const choices = Object.keys(currencies.list).filter(
+    (key) => key !== currencies.currency
+  );
+  choices.unshift(currencies.currency);
+  return { choices, products };
+};
+
+const handlePages = (page, limit, total, categoriesIn, category) => {
   const categories = categoriesIn.map((cat) => {
     cat.active = cat.category === category ? "active" : "";
     cat.active === "active" ? (total = cat.count) : "";
@@ -29,11 +40,8 @@ const handlePages = (
     temp.active = i === parseInt(page) ? "active" : "";
     pages.push(temp);
   }
-  const choices = Object.keys(currencies.list).filter(
-    (key) => key !== currencies.currency
-  );
-  choices.unshift(currencies.currency);
-  return { choices, pages, categories };
+
+  return { pages, categories };
 };
 
 module.exports = {
@@ -53,16 +61,19 @@ module.exports = {
         `/products?limit=${limit}&offset=${offset}&category=${category}`
       );
       const categoriesRaw = await axios.get("/categories");
-      const symbol = currenciesRaw.symbol;
+      const symbol = currenciesRaw.data.symbol;
       let total = categoriesRaw.data.reduce((acc, curr) => acc + curr.count, 0);
 
-      const products = handleCurrency(currenciesRaw.data, productsRaw);
-      const { choices, pages, categories } = handlePages(
+      const { choices, products } = handleCurrency(
+        currenciesRaw.data,
+        productsRaw
+      );
+
+      const { pages, categories } = handlePages(
         page,
         limit,
         total,
         categoriesRaw.data,
-        currenciesRaw.data,
         category
       );
 
@@ -74,7 +85,6 @@ module.exports = {
         auth: req.auth,
         categories,
       };
-
       return res.render("index", {
         pages,
         categoryString,
@@ -122,22 +132,16 @@ module.exports = {
       const id = req.params.id;
       const result = await axios.get(`/products/${id}`);
       const name = result.data.product_name;
-
       const getCurrency = req.query.currency
         ? `/currency?currency=${req.query.currency}`
         : "/currency";
-
       let currencies = await axios.get(getCurrency);
-      currencies = currencies.data;
-      const product = result.data;
-      product.price =
-        currencies.symbol + `${(product.price * currencies.rate).toFixed(2)}`;
+      const symbol = currencies.data.symbol;
 
-      const choices = Object.keys(currencies.list).filter(
-        (key) => key !== currencies.currency
+      const { choices, products: product } = handleCurrency(
+        currencies.data,
+        result
       );
-      const symbol = currencies.symbol;
-      choices.unshift(currencies.currency);
 
       res.locals.metaTags = {
         title: name,
@@ -146,7 +150,6 @@ module.exports = {
         noauth: req.noauth,
         auth: req.auth,
       };
-      console.log(product);
 
       res.render("product", { product, choices, symbol });
     } catch (err) {
