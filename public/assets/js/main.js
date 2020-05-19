@@ -4,8 +4,8 @@ const handleTab = async (cat) => {
     let params = new URLSearchParams(window.location.search.slice(1));
     const currency = params.get("currency") || localStorage.getItem("currency");
     let url = currency
-      ? `?category=${cat}&currency=${currency}`
-      : `?category=${cat}`;
+      ? `/?category=${cat}&currency=${currency}`
+      : `/?category=${cat}`;
 
     window.location.replace(url);
   } catch (err) {
@@ -17,7 +17,7 @@ const handlePage = async (num) => {
     let params = new URLSearchParams(window.location.search.slice(1));
     const category = params.get("category");
     const currency = params.get("currency") || localStorage.getItem("currency");
-    let url = category ? `?category=${category}&page=${num}` : `?page=${num}`;
+    let url = category ? `/?category=${category}&page=${num}` : `/?page=${num}`;
     url = currency ? `${url}&currency=${currency}` : url;
     window.location.replace(url);
   } catch (err) {
@@ -34,8 +34,8 @@ const handleCurrency = async (currency, firstLoad = false) => {
     const page = params.get("page");
 
     let url = category
-      ? `?category=${category}&currency=${currency}`
-      : `?currency=${currency}`;
+      ? `/?category=${category}&currency=${currency}`
+      : `/?currency=${currency}`;
     url = page ? `${url}&page=${page}` : url;
     window.location.replace(url);
     // }
