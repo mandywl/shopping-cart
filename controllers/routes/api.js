@@ -12,12 +12,15 @@ const {
   checkoutOrder,
 } = require("../handlers/api");
 
+const { getCurrency } = require("../../util/currency");
+
 const {
   isAuthenticated,
   apiAuthenticated,
 } = require("../../config/middleware/authenticate");
 
 router.route("/api/products").get(getApi);
+router.route("/api/currency").get(getCurrency);
 router
   .route("/orders")
   .get(isAuthenticated, getOrder)

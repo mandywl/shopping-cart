@@ -5,7 +5,6 @@ const { Users, Products, Orders } = require("../../models/models");
 const csvName = "product-list.csv";
 const productList = `util/${csvName}`;
 const { Sequelize } = require("../../config/connectionDb");
-
 const readFileAsync = promisify(fs.readFile);
 
 fs.watchFile(productList, { interval: 1000 }, async () => {
