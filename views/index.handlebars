@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>{{category}}</h1>
+    <h1>{{categoryString}}</h1>
 
     <ul class="pagination center">
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
@@ -35,4 +35,11 @@
         </div>
         {{/each}}
     </div>
+    <ul class="pagination center">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        {{#each pages}}
+        <li class="{{active}}"><a onclick="handlePage('{{page}}')">{{page}}</a></li>
+        {{/each}}
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
 </div>
