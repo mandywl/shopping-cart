@@ -3,26 +3,23 @@
         <div class="card-panel signup">
             <h4>Orders</h4>
             <table>
+                {{#if orders.length}}
                 <thead>
                     <tr>
                         <th>Product</th>
                         <th>Qty</th>
                         <th>Price</th>
                         <th>Subtotal</th>
-
                     </tr>
                 </thead>
+                {{/if}}
                 <tbody class="center">
                     {{#each orders}}
-
                     <tr>
                         <td>
                             <div class="row">
                                 <div class="col s12 m4">
-                                    <img
-                                        width="100%"
-                                        src="/assets/img/{{img}}"
-                                    />
+                                    <img width="100%" src="/assets/img/{{img}}" />
                                 </div>
                                 <div class="col s12 m8">
                                     <div class="flex order-name truncate">
@@ -34,15 +31,14 @@
                                     </span>
                                 </div>
                             </div>
-
                         </td>
                         <td>{{qty}}</td>
                         <td>{{price}}</td>
                         <td>{{subtotal}}</td>
-
                     </tr>
+                    {{else}}
+                    <p>There is no item in your cart at the moment. To add an item, please go to home page.</p>
                     {{/each}}
-
                 </tbody>
             </table>
             <div class="signup">
@@ -53,7 +49,7 @@
                                 <span class="mailto">
                                     Attention:
                                 </span>
-                                <div class="mailto-name trunc">
+                                <div class="mailto-detail trunc">
                                     {{first_name}} {{last_name}}
                                 </div>
 
@@ -79,10 +75,29 @@
                     </div>
                 </div>
                 <div class="container center">
-                    <button
-                        class="btn btn-default"
-                        onclick="checkout()"
-                    >checkout</button>
+                    <!-- Modal Trigger -->
+                    <button data-target="modal1" class="btn btn-default modal-trigger"
+                        onclick="checkout()">checkout</button>
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal modal-fixed-footer">
+                        <div class="modal-content">
+                            <h4>Success</h4>
+                            <p>You order has been made successfully!</p>
+                            <p>If you have changed your mind and would like to
+                                cancel this order, please call us on 04 1234 567.</p>
+                            <p>Please make the payment to below account;</p>
+                            <p>Name: Mandy &amp; James</p>
+                            <p>BSB: 012345</p>
+                            <p>ACC: 123456789</p><br /><br />
+                            <p>PayID:</p>
+                            <p>04 12345678</p><br />
+                            <p>Orders will be deliveried within 20 minutes upon payment completed</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="close">Close</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

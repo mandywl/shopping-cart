@@ -15,8 +15,11 @@ const orderItem = async (id, name) => {
 const checkout = async () => {
   try {
     await $.ajax({ url: "/orders", type: "DELETE" });
-    window.location.replace("/orders");
   } catch (err) {
     console.log(err);
   }
 };
+
+$("#close").on("click", () => {
+  window.location.replace("/orders");
+});
