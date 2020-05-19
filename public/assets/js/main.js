@@ -2,7 +2,7 @@
 const handleTab = async (cat) => {
   try {
     let params = new URLSearchParams(window.location.search.slice(1));
-    const currency = params.get("currency");
+    const currency = params.get("currency") || localStorage.getItem("currency");
     let url = currency
       ? `?category=${cat}&currency=${currency}`
       : `?category=${cat}`;
@@ -16,7 +16,7 @@ const handlePage = async (num) => {
   try {
     let params = new URLSearchParams(window.location.search.slice(1));
     const category = params.get("category");
-    const currency = params.get("currency");
+    const currency = params.get("currency") || localStorage.getItem("currency");
     let url = category ? `?category=${category}&page=${num}` : `?page=${num}`;
     url = currency ? `${url}&currency=${currency}` : url;
     window.location.replace(url);
@@ -24,8 +24,11 @@ const handlePage = async (num) => {
     console.log(err);
   }
 };
-const handleCurrency = async (currency) => {
+const handleCurrency = async (currency, firstLoad = false) => {
   try {
+    const currentCurrency = localStorage.getItem("currency");
+    // if (currentCurrency !== currency) {
+    localStorage.setItem("currency", currency);
     let params = new URLSearchParams(window.location.search.slice(1));
     const category = params.get("category");
     const page = params.get("page");
@@ -35,6 +38,8 @@ const handleCurrency = async (currency) => {
       : `?currency=${currency}`;
     url = page ? `${url}&page=${page}` : url;
     window.location.replace(url);
+    // }
+    // return;
   } catch (err) {
     console.log(err);
   }
