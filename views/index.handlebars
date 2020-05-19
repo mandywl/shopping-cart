@@ -1,5 +1,13 @@
 <div class="container">
-    <h1>Burgers Menu</h1>
+    <h1>{{category}}</h1>
+
+    <ul class="pagination center">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        {{#each pages}}
+        <li class="{{active}}"><a onclick="handlePage('{{page}}')">{{page}}</a></li>
+        {{/each}}
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
     <div class="row">
         {{#each products}}
         <div class="col s12 m3">

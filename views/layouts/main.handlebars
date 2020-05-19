@@ -74,7 +74,7 @@
 							class='dropdown-content'
 						>
 							{{#each choices}}
-							<li><a href="/?currency={{this}}">{{this}}</a></li>
+							<li><a onclick="handleCurrency('{{this}}')">{{this}}</a></li>
 							{{/each}}
 						</ul>
 
@@ -124,7 +124,7 @@
 							<i
 								class="material-icons tooltipped"
 								data-position="bottom"
-								data-tooltip="Log out"
+								data-tooltip="Logout"
 							>keyboard_return</i>
 						</a>
 					</li>
@@ -132,13 +132,18 @@
 			</div>
 			<div class="nav-content">
 				<ul class="tabs tabs-transparent">
+					<li class="tab"><a onclick="window.location.replace('/')">All</a></li>
+					{{#each metaTags.categories}}
 					<li class="tab"><a
-							class="active"
-							href="/"
-						>Burgers</a></li>
-					<li class="tab"><a href="/">Drinks</a></li>
+							class="{{active}}"
+							onclick="handleTab('{{category}}')"
+						>{{category}}</a></li>
+
+
+					{{/each}}
 				</ul>
 			</div>
+
 		</nav>
 
 
@@ -154,6 +159,7 @@
 	<script src="/assets/js/signup.js"></script>
 	<script src="/assets/js/materialize.js"></script>
 	<script src="/assets/js/login.js"></script>
+	<script src="/assets/js/main.js"></script>
 	<script src="/assets/js/order.js"></script>
 	<script src="/assets/js/address-autocomplete.js"></script>
 </body>
