@@ -32,14 +32,14 @@
 // 1. Colors
 // ==========================================================================
 
-$primary-color: color("indigo", "base") !default;
+$primary-color: color("teal", "base") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("pink", "base") !default;
+$secondary-color: color("purple", "base") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
-$link-color: color("light-blue", "darken-1") !default;
+$link-color: $secondary-color !default;
 
 // 2. Badges
 // ==========================================================================
@@ -99,7 +99,7 @@ $button-floating-radius: 50% !default;
 
 $card-padding: 24px !default;
 $card-bg-color: #fff !default;
-$card-link-color: color("orange", "accent-2") !default;
+$card-link-color: $secondary-color !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 
 // 5. Carousel

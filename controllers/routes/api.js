@@ -13,6 +13,8 @@ const {
   getCategories,
 } = require("../handlers/api");
 
+const { getCurrency } = require("../../util/currency");
+
 const {
   isAuthenticated,
   apiAuthenticated,
@@ -20,6 +22,7 @@ const {
 
 router.route("/api/products").get(getApi);
 router.route("/api/categories").get(getCategories);
+router.route("/api/currency").get(getCurrency);
 router
   .route("/orders")
   .get(isAuthenticated, getOrder)
