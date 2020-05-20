@@ -1,5 +1,53 @@
 <div class="container">
-    <h1>{{category}}</h1>
+
+    <div class="carousel carousel-slider center signup">
+        <div class="carousel-fixed-item">
+            <div class="carousel-title-container">
+                <div class="card carousel-title">
+                    <h3 class="center">{{categoryString}}</h3>
+                </div>
+            </div>
+
+        </div>
+        <div
+            class="carousel-item red white-text"
+            href="#one!"
+        >
+            <img
+                class="carousel-img"
+                src="/assets/img/cheeseBurger.jpg"
+            />
+        </div>
+        <div
+            class="carousel-item amber white-text"
+            href="#two!"
+        >
+            <img
+                class="carousel-img"
+                src="/assets/img/chickenBurger.jpg"
+            />
+        </div>
+        <div
+            class="carousel-item green white-text"
+            href="#three!"
+        >
+            <img
+                class="carousel-img"
+                src="/assets/img/placeholder.png"
+            />
+        </div>
+        <div
+            class="carousel-item blue white-text"
+            href="#four!"
+        >
+            <img
+                class="carousel-img"
+                src="/assets/img/placeholder.png"
+            />
+        </div>
+    </div>
+
+
 
     <ul class="pagination center">
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
@@ -13,7 +61,7 @@
         <div class="col s12 m3">
             <div class="card hoverable">
                 <div class="card-image hoverable waves-effect waves-block waves-light">
-                    <a href="/product/{{id}}">
+                    <a onclick="handleProduct('{{id}}')">
                         <img
                             class="activator img"
                             src="/assets/img/{{img}}"
@@ -35,4 +83,14 @@
         </div>
         {{/each}}
     </div>
+    <ul class="pagination center">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        {{#each pages}}
+        <li class="{{active}}"><a onclick="handlePage('{{page}}')">{{page}}</a></li>
+        {{/each}}
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/assets/js/carousel.js"></script>

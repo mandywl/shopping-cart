@@ -13,7 +13,7 @@
                     </tr>
                 </thead>
                 <tbody class="center">
-                    {{#each orders}}
+                    {{#each order}}
 
                     <tr>
                         <td>
@@ -37,8 +37,8 @@
 
                         </td>
                         <td>{{qty}}</td>
-                        <td>{{price}}</td>
-                        <td>{{subtotal}}</td>
+                        <td>{{{price}}}</td>
+                        <td>{{{subtotal}}}</td>
 
                     </tr>
                     {{/each}}
@@ -68,24 +68,114 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s4">
+                    <div class="col s4 right-align">
                         <span class="mailto">
                             Total:
                         </span>
                         <div class="mailto-detail">
-                            ${{total}}
+                            {{{total}}}
                         </div>
 
                     </div>
                 </div>
                 <div class="container center">
                     <button
-                        class="btn btn-default"
-                        onclick="checkout()"
+                        class="btn btn-default modal-trigger"
+                        href="#checkout-modal"
+                        {{checkout}}
                     >checkout</button>
                 </div>
             </div>
 
         </div>
+    </div>
+</div>
+<div
+    id="checkout-modal"
+    class="modal"
+>
+    <div class="modal-content">
+        <h4>Confirm checkout</h4>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+
+                    </tr>
+                </thead>
+                <tbody class="center">
+                    {{#each order}}
+
+                    <tr>
+                        <td>{{qty}} x</td>
+                        <td>{{product_name}}</td>
+                        <td>{{{price}}}</td>
+                        <td>{{{subtotal}}}</td>
+
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+            <div class="row signup">
+                <div class="col s8">
+                    <div class="row">
+                        <div class="col s12">
+                            <span class="mailto">
+                                Attention:
+                            </span>
+                            <div class="mailto-name trunc">
+                                {{first_name}} {{last_name}}
+                            </div>
+
+                        </div>
+                        <div class="col s12">
+                            <span class="mailto">
+                                Address:
+                            </span>
+                            <div class="mailto-detail">
+                                {{address}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4 right-align">
+                    <span class="mailto">
+                        Total:
+                    </span>
+                    <div class="mailto-detail">
+                        {{{total}}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-red red-text btn-flat">Cancel</a>
+        <a
+            onclick="checkout()"
+            class="modal-close waves-effect waves-green btn-flat"
+        >Confirm</a>
+    </div>
+</div>
+
+<div
+    id="success-modal"
+    class="modal"
+>
+    <div class="modal-content">
+        <h4>Succes!</h4>
+        <p>Thanks for shopping</p>
+    </div>
+    <div class="modal-footer">
+        <a
+            href=""
+            class="modal-close waves-effect waves-green btn-flat"
+        >Finish</a>
     </div>
 </div>

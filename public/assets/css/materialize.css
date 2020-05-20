@@ -2573,7 +2573,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -2708,7 +2710,7 @@ video.responsive-video {
   color: #fff;
 }
 .pagination li.active {
-  background-color: #009688;
+  background-color: #9c27b0;
 }
 .pagination li.disabled a {
   cursor: default;
@@ -2741,7 +2743,8 @@ video.responsive-video {
   color: rgba(255, 255, 255, 0.7);
 }
 .breadcrumb i,
-.breadcrumb [class^=mdi-], .breadcrumb [class*=mdi-],
+.breadcrumb [class^=mdi-],
+.breadcrumb [class*=mdi-],
 .breadcrumb i.material-icons {
   display: inline-block;
   float: left;
@@ -2790,7 +2793,8 @@ video.responsive-video {
   transform: translateX(-50%);
 }
 
-.pin-top, .pin-bottom {
+.pin-top,
+.pin-bottom {
   position: relative;
 }
 
@@ -2814,7 +2818,8 @@ ul.staggered-list li {
   Media Query Classes
 **********************/
 @media only screen and (max-width : 600px) {
-  .hide-on-small-only, .hide-on-small-and-down {
+  .hide-on-small-only,
+.hide-on-small-and-down {
     display: none !important;
   }
 }
@@ -2907,7 +2912,9 @@ ul.staggered-list li {
   background-color: rgba(51, 51, 51, 0.08);
 }
 
-table, th, td {
+table,
+th,
+td {
   border: none;
 }
 
@@ -2932,7 +2939,8 @@ table.highlight > tbody > tr {
 table.highlight > tbody > tr:hover {
   background-color: rgba(242, 242, 242, 0.5);
 }
-table.centered thead tr th, table.centered tbody tr td {
+table.centered thead tr th,
+table.centered tbody tr td {
   text-align: center;
 }
 
@@ -2940,7 +2948,8 @@ tr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-td, th {
+td,
+th {
   padding: 15px 5px;
   display: table-cell;
   text-align: left;
@@ -3101,7 +3110,9 @@ table.responsive-table td {
   height: 0;
   overflow: hidden;
 }
-.video-container iframe, .video-container object, .video-container embed {
+.video-container iframe,
+.video-container object,
+.video-container embed {
   position: absolute;
   top: 0;
   left: 0;
@@ -3195,7 +3206,8 @@ table.responsive-table td {
   text-align: right;
 }
 
-.center, .center-align {
+.center,
+.center-align {
   text-align: center;
 }
 
@@ -7547,7 +7559,7 @@ input[type=range]::-ms-thumb {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 200px;
   perspective: 500px;
   transform-style: preserve-3d;
   transform-origin: 0% 50%;
@@ -7569,7 +7581,7 @@ input[type=range]::-ms-thumb {
 .carousel.carousel-slider .carousel-item {
   width: 100%;
   height: 100%;
-  min-height: 400px;
+  min-height: 200px;
   position: absolute;
   top: 0;
   left: 0;
@@ -7584,8 +7596,8 @@ input[type=range]::-ms-thumb {
 }
 .carousel .carousel-item {
   visibility: hidden;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   position: absolute;
   top: 0;
   left: 0;

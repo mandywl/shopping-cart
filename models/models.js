@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 const { Sequelize, sequelize } = require("../config/connectionDb");
+
 sequelize.sync();
 
 module.exports = {

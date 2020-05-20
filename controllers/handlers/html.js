@@ -1,70 +1,54 @@
 const axios = require("axios");
+const { handleCurrency, handlePages } = require("../../util/page-objects");
 
 module.exports = {
   getIndex: async function(req, res) {
     try {
       const page = req.query.page || 1;
       const limit = req.query.limit || 8;
-      let category = req.query.category || "all";
+      const category = req.query.category || "all";
+      const categoryString =
+        category.charAt(0).toUpperCase() + category.slice(1);
       const offset = (page - 1) * limit;
-
       const getCurrency = req.query.currency
         ? `/currency?currency=${req.query.currency}`
         : "/currency";
-      let currencies = await axios.get(getCurrency);
-      currencies = currencies.data;
-
-      const result = await axios.get(
+      const currenciesRaw = await axios.get(getCurrency);
+      const productsRaw = await axios.get(
         `/products?limit=${limit}&offset=${offset}&category=${category}`
       );
+      const categoriesRaw = await axios.get("/categories");
+      const symbol = currenciesRaw.data.symbol;
+      let total = categoriesRaw.data.reduce((acc, curr) => acc + curr.count, 0);
 
-      let categories = await axios.get("/categories");
-      categories = categories.data;
-
-      let total = categories.reduce((acc, curr) => acc + curr.count, 0);
-      categories = categories.map((cat) => {
-        cat.active = cat.category === category ? "active" : "";
-        cat.active === "active" ? (total = cat.count) : "";
-        return cat;
-      });
-
-      let pageMax = Math.ceil(total / limit);
-
-      let pages = [];
-      for (let i = 1; i <= pageMax; i++) {
-        let temp = { page: i };
-        temp.active = i === parseInt(page) ? "active" : "";
-        pages.push(temp);
-      }
-
-      category = category.charAt(0).toUpperCase() + category.slice(1);
-
-      const products = result.data.map((product) => {
-        product.price =
-          currencies.symbol + `${(product.price * currencies.rate).toFixed(2)}`;
-        return product;
-      });
-      const choices = Object.keys(currencies.list).filter(
-        (key) => key !== currencies.currency
+      const { choices, products } = handleCurrency(
+        currenciesRaw.data,
+        productsRaw
       );
-      const symbol = currencies.symbol;
-      choices.unshift(currencies.currency);
+
+      const { pages, categories } = handlePages(
+        page,
+        limit,
+        total,
+        categoriesRaw.data,
+        category
+      );
 
       res.locals.metaTags = {
-        title: category,
+        title: categoryString,
         description: "This is a discription",
         keywords: "here are some keywords",
         noauth: req.noauth,
         auth: req.auth,
         categories,
       };
-
       return res.render("index", {
         pages,
-        category,
+        categoryString,
         products,
         choices,
         symbol,
+        currency: req.query.currency,
       });
     } catch (err) {
       console.error(err);
@@ -106,6 +90,17 @@ module.exports = {
       const id = req.params.id;
       const result = await axios.get(`/products/${id}`);
       const name = result.data.product_name;
+      const getCurrency = req.query.currency
+        ? `/currency?currency=${req.query.currency}`
+        : "/currency";
+      let currencies = await axios.get(getCurrency);
+      const symbol = currencies.data.symbol;
+
+      const { choices, products: product } = handleCurrency(
+        currencies.data,
+        result
+      );
+
       res.locals.metaTags = {
         title: name,
         description: `${name}'s webpage`,
@@ -113,7 +108,13 @@ module.exports = {
         noauth: req.noauth,
         auth: req.auth,
       };
-      res.render("product", { products: [result.data] });
+
+      res.render("product", {
+        product,
+        choices,
+        symbol,
+        currency: req.query.currency,
+      });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: err.code });

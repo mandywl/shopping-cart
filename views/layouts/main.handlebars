@@ -42,7 +42,7 @@
 				<div class="logo left">
 					<a
 						class="logo"
-						href="/"
+						onclick="handleTab('all')"
 					>
 						<img
 							class="tooltipped"
@@ -107,7 +107,7 @@
 					<li>
 						<a
 							{{metaTags.noauth}}
-							href="/orders"
+							href="/orders?currency={{currency}}"
 						>
 							<i
 								class="material-icons tooltipped"
@@ -130,9 +130,10 @@
 					</li>
 				</ul>
 			</div>
+			{{#if metaTags.categories}}
 			<div class="nav-content">
 				<ul class="tabs tabs-transparent">
-					<li class="tab"><a onclick="window.location.replace('/')">All</a></li>
+					<li class="tab"><a onclick="handleTab('all')">All</a></li>
 					{{#each metaTags.categories}}
 					<li class="tab"><a
 							class="{{active}}"
@@ -143,14 +144,55 @@
 					{{/each}}
 				</ul>
 			</div>
+			{{/if}}
 
 		</nav>
 
 
 	</header>
 
+	<main>
+		{{{ body }}}
+	</main>
+	<footer class="page-footer signup">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Shopping-cart</h5>
+					<p class="grey-text text-lighten-4">A simple and free e-store template.</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Check out the project</h5>
+					<ul>
+						<li><a
+								class="grey-text text-lighten-3"
+								href="#!"
+							>GitHub</a></li>
+					</ul>
 
-	{{{ body }}}
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				Simple and free
+				<p class="grey-text text-lighten-4 right">
+					Created by:&nbsp;
+					<a
+						class="amber-text"
+						href="https://github.com/jschrbr"
+					>James Scheiber </a>
+					&amp;
+					<a
+						class="amber-text"
+						href="https://github.com/mandywl"
+						target="_blank"
+					>Mandy Wells-Lakeland</a>
+				</p>
+
+			</div>
+		</div>
+	</footer>
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
