@@ -14,8 +14,10 @@ const orderItem = async (id, name) => {
 
 const checkout = async () => {
   try {
+    const elem = $(".modal#success-modal");
+    var instance = M.Modal.getInstance(elem);
     await $.ajax({ url: "/orders", type: "DELETE" });
-    window.location.replace("/orders");
+    instance.open();
   } catch (err) {
     console.log(err);
   }

@@ -8,7 +8,7 @@
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "watch": "nodemon -x \"npm start\"",
+    "watch": "nodemon -x \"npm start\" --ignore public",
     "theme": "sass util/sass/materialize.scss public/assets/css/materialize.css",
     "watch-theme": "nodemon --watch util -e \"scss\" -x \"npm run theme\" "
   },

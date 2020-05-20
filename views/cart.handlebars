@@ -80,9 +80,8 @@
                 </div>
                 <div class="container center">
                     <button
-                        class="btn btn-default"
-                        onclick="checkout()"
-                        {{!-- href="#checkout-modal" --}}
+                        class="btn btn-default modal-trigger"
+                        href="#checkout-modal"
                         {{checkout}}
                     >checkout</button>
                 </div>
@@ -96,13 +95,55 @@
     class="modal"
 >
     <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
+        <h4>Confirm checkout</h4>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Subtotal</th>
+
+                    </tr>
+                </thead>
+                <tbody class="center">
+                    {{#each order}}
+
+                    <tr>
+                        <td>{{qty}} x</td>
+                        <td>{{product_name}}</td>
+                        <td>{{{price}}}</td>
+                        <td>{{{subtotal}}}</td>
+
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-red red-text btn-flat">Cancel</a>
+        <a
+            onclick="checkout()"
+            class="modal-close waves-effect waves-green btn-flat"
+        >Confirm</a>
+    </div>
+</div>
+
+<div
+    id="success-modal"
+    class="modal"
+>
+    <div class="modal-content">
+        <h4>Succes!</h4>
+        <p>Thanks for shopping</p>
     </div>
     <div class="modal-footer">
         <a
-            href="#!"
+            href=""
             class="modal-close waves-effect waves-green btn-flat"
-        >Agree</a>
+        >Finish</a>
     </div>
 </div>
