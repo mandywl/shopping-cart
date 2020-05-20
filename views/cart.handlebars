@@ -13,7 +13,7 @@
                     </tr>
                 </thead>
                 <tbody class="center">
-                    {{#each orders}}
+                    {{#each order}}
 
                     <tr>
                         <td>
@@ -37,8 +37,8 @@
 
                         </td>
                         <td>{{qty}}</td>
-                        <td>{{price}}</td>
-                        <td>{{subtotal}}</td>
+                        <td>{{{price}}}</td>
+                        <td>{{{subtotal}}}</td>
 
                     </tr>
                     {{/each}}
@@ -68,12 +68,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s4">
+                    <div class="col s4 right-align">
                         <span class="mailto">
                             Total:
                         </span>
                         <div class="mailto-detail">
-                            ${{total}}
+                            {{{total}}}
                         </div>
 
                     </div>
@@ -82,6 +82,7 @@
                     <button
                         class="btn btn-default"
                         onclick="checkout()"
+                        {{checkout}}
                     >checkout</button>
                 </div>
             </div>

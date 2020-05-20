@@ -2,6 +2,8 @@
 const { Users, Products, Orders } = require("../../models/models");
 const { Sequelize } = require("../../config/connectionDb");
 const checkCSV = require("../../util/products");
+const { handleCurrency } = require("../../util/page-objects");
+const axios = require("axios");
 
 Users.hasMany(Orders);
 Products.hasMany(Orders);
@@ -48,6 +50,8 @@ module.exports = {
   },
   getOrder: async function(req, res) {
     try {
+      const { first_name, last_name, address } = req.user;
+
       res.locals.metaTags = {
         title: "Hello",
         description: "This is a discription",
@@ -64,34 +68,76 @@ module.exports = {
           },
         ],
       });
-      const orders = results
-        .map((res) => res.dataValues.product.dataValues)
-        .reduce((acc, current) => {
+
+      const getCurrency = req.query.currency
+        ? `/currency?currency=${req.query.currency}`
+        : "/currency";
+      let currencies = await axios.get(getCurrency);
+      const symbol = currencies.data.symbol;
+
+      const orders = results.map((res) => res.dataValues.product.dataValues);
+      const send = { data: orders };
+      let { choices, products } = handleCurrency(currencies.data, send);
+      if (typeof products !== Array) {
+        const checkout = "disabled";
+        return res.render("cart", {
+          symbol,
+          choices,
+          first_name,
+          last_name,
+          address,
+          currency: req.query.currency,
+          checkout,
+        });
+      } else {
+        const order = products.reduce((acc, current) => {
           const x = acc.find((item) => item.id === current.id);
           if (!x) {
+            symb = current.price.slice(0, current.price.indexOf(";") + 1);
+            price = parseFloat(
+              current.price.slice(
+                current.price.indexOf(";") + 1,
+                current.price.length
+              )
+            ).toFixed(2);
+
             current.qty = 1;
-            current.subtotal = current.price;
+            current.subtotal = `${symb}${price}`;
+
             return acc.concat([current]);
           } else {
+            symb = x.price.slice(0, x.price.indexOf(";") + 1);
+            price = parseFloat(
+              x.price.slice(x.price.indexOf(";") + 1, x.price.length)
+            );
             x.qty++;
-            x.subtotal = (x.qty * x.price).toFixed(2);
+            const subtotal = (x.qty * price).toFixed(2);
+            x.subtotal = `${symb}${subtotal}`;
+
             return acc;
           }
         }, []);
-      const total = orders
-        .reduce((acc, curr) => {
-          return acc + parseFloat(curr.subtotal);
-        }, 0)
-        .toFixed(2);
-
-      const { first_name, last_name, address } = req.user;
-      return res.render("cart", {
-        orders,
-        total,
-        first_name,
-        last_name,
-        address,
-      });
+        const countTotal = order.reduce((acc, curr) => {
+          price = parseFloat(
+            curr.subtotal.slice(
+              curr.subtotal.indexOf(";") + 1,
+              curr.subtotal.length
+            )
+          );
+          return acc + price;
+        }, 0);
+        const total = `${symbol}${countTotal.toFixed(2)}`;
+        return res.render("cart", {
+          symbol,
+          choices,
+          order,
+          total,
+          first_name,
+          last_name,
+          address,
+          currency: req.query.currency,
+        });
+      }
     } catch (err) {
       console.error(err);
       return res.status(500).json({ error: err.code });
