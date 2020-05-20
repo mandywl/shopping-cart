@@ -24,10 +24,8 @@ const handlePage = async (num) => {
     console.log(err);
   }
 };
-const handleCurrency = async (currency, firstLoad = false) => {
+const handleCurrency = async (currency) => {
   try {
-    const currentCurrency = localStorage.getItem("currency");
-    // if (currentCurrency !== currency) {
     localStorage.setItem("currency", currency);
     let params = new URLSearchParams(window.location.search.slice(1));
     const category = params.get("category");
@@ -38,8 +36,18 @@ const handleCurrency = async (currency, firstLoad = false) => {
       : `/?currency=${currency}`;
     url = page ? `${url}&page=${page}` : url;
     window.location.replace(url);
-    // }
-    // return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const handleProduct = async (id) => {
+  try {
+    let params = new URLSearchParams(window.location.search.slice(1));
+    const currency = params.get("currency") || localStorage.getItem("currency");
+    const baseUrl = `/product/${id}`;
+    const url = currency ? `${baseUrl}?currency=${currency}` : baseURl;
+    window.location.replace(url);
   } catch (err) {
     console.log(err);
   }

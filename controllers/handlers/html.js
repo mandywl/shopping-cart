@@ -14,10 +14,10 @@ const handleCurrency = (currencies, productsIn) => {
     productsIn.data.length > 1
       ? prodMulIn(currencies, productsIn)
       : {
-          ...productsIn,
+          ...productsIn.data,
           price:
             currencies.symbol +
-            `${(productsIn.price * currencies.rate).toFixed(2)}`,
+            `${(productsIn.data.price * currencies.rate).toFixed(2)}`,
         };
   const choices = Object.keys(currencies.list).filter(
     (key) => key !== currencies.currency
@@ -142,6 +142,7 @@ module.exports = {
         currencies.data,
         result
       );
+      console.log(product.data);
 
       res.locals.metaTags = {
         title: name,
