@@ -78,7 +78,7 @@ module.exports = {
       const orders = results.map((res) => res.dataValues.product.dataValues);
       const send = { data: orders };
       let { choices, products } = handleCurrency(currencies.data, send);
-      if (typeof products !== Array) {
+      if (products.price) {
         const checkout = "disabled";
         return res.render("cart", {
           symbol,
