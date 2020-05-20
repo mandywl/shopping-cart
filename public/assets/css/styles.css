@@ -1,5 +1,13 @@
 body {
   background-color: rgb(240, 240, 240);
+  min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .signup {
