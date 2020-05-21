@@ -9,6 +9,7 @@ const confirmPasswordInput = $("input#confirm-password-input");
 
 const signupUser = async (userData) => {
   try {
+    $(".signup-preloader").addClass("active");
     await $.post("/api/signup", userData);
     signupEmailInput.val("");
     firstNameInput.val("");
@@ -19,7 +20,8 @@ const signupUser = async (userData) => {
     addressInput.attr("placeholder", "").blur();
     window.location.replace("/login");
   } catch (err) {
-    $(".login-error").show();
+    $(".signup-preloader").removeClass("active");
+    $(".signup-error").show();
   }
 };
 

@@ -4,11 +4,13 @@ const passwordInput = $("input#password-input");
 
 const loginUser = async (userData) => {
   try {
+    $(".login-preloader").addClass("active");
     await $.post("/api/login", userData);
     emailInput.val("");
     passwordInput.val("");
     window.location.replace("/");
   } catch (err) {
+    $(".login-preloader").removeClass("active");
     $(".login-error").show();
     passwordInput.val("");
   }

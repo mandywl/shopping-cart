@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to shopping-cart 👋</h1>
+<h1 align="center">Welcome to shopping-cart 🛒</h1>
 <p>
   <a href="https://www.npmjs.com/package/shopping-cart" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/shopping-cart.svg">
