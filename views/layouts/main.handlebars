@@ -4,33 +4,15 @@
 <head>
 	<meta charset="UTF-8">
 	<!--Import Google Icon Font-->
-	<link
-		href="https://fonts.googleapis.com/icon?family=Material+Icons"
-		rel="stylesheet"
-	>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<!-- Compiled and minified CSS -->
-	<link
-		rel="stylesheet"
-		href="/assets/css/materialize.css"
-	>
-	<link
-		rel="stylesheet"
-		href="/assets/css/styles.css"
-	>
+	<link rel="stylesheet" href="/assets/css/materialize.css">
+	<link rel="stylesheet" href="/assets/css/styles.css">
 	<!--Let browser know website is optimized for mobile-->
-	<meta
-		name="viewport"
-		content="width=device-width, initial-scale=1.0"
-	/>
-	<meta
-		name="description"
-		content="{{metaTags.description}}"
-	>
-	<meta
-		name="keywords"
-		content="{{metaTags.keywords}}"
-	>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="{{metaTags.description}}">
+	<meta name="keywords" content="{{metaTags.keywords}}">
 	<title>{{metaTags.title}}</title>
 </head>
 
@@ -40,39 +22,19 @@
 			<div class="nav-wrapper">
 
 				<div class="logo left">
-					<a
-						class="logo"
-						onclick="handleTab('all')"
-					>
-						<img
-							class="tooltipped"
-							data-position="bottom"
-							data-tooltip="Home"
-							alt="logo"
-							src="/assets/img/storeLogo.png"
-							width=40
-						/>
+					<a class="logo" onclick="handleTab('all')">
+						<img class="tooltipped home-logo" data-position="bottom" data-tooltip="Home" alt="logo"
+							src="/assets/img/storeLogo.png" width=40 />
 					</a>
 				</div>
 
-				<ul
-					id="nav-mobile"
-					class="right"
-				>
+				<ul id="nav-mobile" class="right">
 					<li>
 
-						<a
-							data-position="bottom"
-							data-tooltip="Currency"
-							class='dropdown-trigger tooltipped'
-							href='#'
-							data-target='dropdown1'
-						><span class="curr-trigger">{{{symbol}}}</span></a>
+						<a data-position="bottom" data-tooltip="Currency" class='dropdown-trigger tooltipped' href='#'
+							data-target='dropdown1'><span class="curr-trigger">{{{symbol}}}</span></a>
 
-						<ul
-							id='dropdown1'
-							class='dropdown-content'
-						>
+						<ul id='dropdown1' class='dropdown-content'>
 							{{#each choices}}
 							<li><a onclick="handleCurrency('{{this}}')">{{this}}</a></li>
 							{{/each}}
@@ -81,51 +43,26 @@
 					</li>
 					<li>
 
-						<a
-							{{metaTags.auth}}
-							href="/signup"
-						>
-							<i
-								class="material-icons tooltipped"
-								data-position="bottom"
-								data-tooltip="Signup"
-							>person_add</i>
+						<a {{metaTags.auth}} href="/signup">
+							<i class="material-icons tooltipped" data-position="bottom"
+								data-tooltip="Signup">person_add</i>
 						</a>
 					</li>
 					<li>
-						<a
-							{{metaTags.auth}}
-							href="/login"
-						>
-							<i
-								class="material-icons tooltipped"
-								data-position="bottom"
-								data-tooltip="Login"
-							>vpn_key</i>
+						<a {{metaTags.auth}} href="/login">
+							<i class="material-icons tooltipped" data-position="bottom" data-tooltip="Login">vpn_key</i>
 						</a>
 					</li>
 					<li>
-						<a
-							{{metaTags.noauth}}
-							href="/orders?currency={{currency}}"
-						>
-							<i
-								class="material-icons tooltipped"
-								data-position="bottom"
-								data-tooltip="Cart"
-							>shopping_cart</i>
+						<a {{metaTags.noauth}} href="/orders?currency={{currency}}">
+							<i class="material-icons tooltipped" data-position="bottom"
+								data-tooltip="Cart">shopping_cart</i>
 						</a>
 					</li>
 					<li>
-						<a
-							{{metaTags.noauth}}
-							href="/logout"
-						>
-							<i
-								class="material-icons tooltipped"
-								data-position="bottom"
-								data-tooltip="Logout"
-							>keyboard_return</i>
+						<a {{metaTags.noauth}} href="/logout">
+							<i class="material-icons tooltipped" data-position="bottom"
+								data-tooltip="Logout">keyboard_return</i>
 						</a>
 					</li>
 				</ul>
@@ -135,10 +72,7 @@
 				<ul class="tabs tabs-transparent">
 					<li class="tab"><a onclick="handleTab('all')">All</a></li>
 					{{#each metaTags.categories}}
-					<li class="tab"><a
-							class="{{active}}"
-							onclick="handleTab('{{category}}')"
-						>{{category}}</a></li>
+					<li class="tab"><a class="{{active}}" onclick="handleTab('{{category}}')">{{category}}</a></li>
 
 
 					{{/each}}
@@ -164,10 +98,7 @@
 				<div class="col l4 offset-l2 s12">
 					<h5 class="white-text">Check out the project</h5>
 					<ul>
-						<li><a
-								class="grey-text text-lighten-3"
-								href="#!"
-							>GitHub</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">GitHub</a></li>
 					</ul>
 
 				</div>
@@ -175,21 +106,19 @@
 		</div>
 		<div class="footer-copyright">
 			<div class="container">
-				Simple and free
-				<p class="grey-text text-lighten-4 right">
-					Created by:&nbsp;
-					<a
-						class="amber-text"
-						href="https://github.com/jschrbr"
-					>James Scheiber </a>
-					&amp;
-					<a
-						class="amber-text"
-						href="https://github.com/mandywl"
-						target="_blank"
-					>Mandy Wells-Lakeland</a>
-				</p>
-
+				<div class="row">
+					<div class="col l6 s12">
+						<p>Simple and free</p>
+					</div>
+					<div class="grey-text text-lighten-4 right col l4 offset-l2 s12">
+						<p>Created by:&nbsp;
+							<a class="amber-text" href="https://github.com/jschrbr">James Scheiber </a>
+							&amp;
+							<a class="amber-text" href="https://github.com/mandywl" target="_blank">Mandy
+								Wells-Lakeland</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</footer>
