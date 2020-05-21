@@ -31,11 +31,13 @@ $(document).ready(function() {
   signUpForm.on("submit", function(event) {
     event.preventDefault();
     const confirmPassword = confirmPasswordInput.val().trim();
+    const address = addressInput.val().trim();
+
     const userData = {
       email: signupEmailInput.val().trim(),
       first_name: firstNameInput.val().trim(),
       last_name: lastNameInput.val().trim(),
-      address: addressInput.val().trim(),
+      address: address.replace(",", ""),
       password: signupPasswordInput.val().trim(),
     };
 
