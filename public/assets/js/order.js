@@ -19,8 +19,8 @@ const orderItem = async (id, name) => {
 const deleteItem = async (id) => {
   try {
     $(".order-preloader").addClass("active");
-    deleteOrderButtons.attr("disabled");
-    updateOrderButtons.attr("disabled");
+    deleteOrderButtons.addClass("disabled");
+    updateOrderButtons.addClass("disabled");
     await $.ajax({
       url: `/api/order/${id}`,
       type: "DELETE",
@@ -33,8 +33,8 @@ const deleteItem = async (id) => {
 
 async function updateItem(id, operation, num) {
   try {
-    deleteOrderButtons.attr("disabled");
-    updateOrderButtons.attr("disabled");
+    deleteOrderButtons.addClass("disabled");
+    updateOrderButtons.addClass("disabled");
     $(".order-preloader").addClass("active");
     if (operation === "add") {
       num++;
