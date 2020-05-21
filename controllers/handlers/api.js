@@ -156,6 +156,36 @@ module.exports = {
       return res.status(500).json({ error: err.code });
     }
   },
+  updateItem: async function(req, res) {
+    try {
+      const values = {
+        productId: req.params.id,
+        userId: req.user.id,
+      };
+      const productId = values.productId;
+      const userId = values.userId;
+      const update = req.query.update;
+      const result =
+        update === "add"
+          ? await Orders.create(values)
+          : await Orders.destroy({ where: { productId, userId }, limit: 1 });
+      return res.json(result);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    }
+  },
+  deleteItem: async function(req, res) {
+    try {
+      const result = await Orders.destroy({
+        where: { productId: req.params.id },
+      });
+      return res.json(result);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    }
+  },
   getProductData: async function(req, res) {
     try {
       const id = req.params.id;

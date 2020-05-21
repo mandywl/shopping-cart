@@ -6,10 +6,12 @@ const loginUser = async (userData) => {
   try {
     $(".login-preloader").addClass("active");
     await $.post("/api/login", userData);
-    emailInput.val("");
-    passwordInput.val("");
+    emailInput.attr("disabled");
+    passwordInput.attr("disabled");
     window.location.replace("/");
   } catch (err) {
+    emailInput.removeAttr("disabled");
+    passwordInput.removeAttr("disabled");
     $(".login-preloader").removeClass("active");
     $(".login-error").show();
     passwordInput.val("");
