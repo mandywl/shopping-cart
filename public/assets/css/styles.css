@@ -10,6 +10,10 @@ main {
   flex: 1 0 auto;
 }
 
+/* .nav-extended {
+  min-height: 50px;
+} */
+
 .signup {
   margin-top: 30px;
 }
@@ -26,7 +30,7 @@ main {
 }
 
 .logo {
-  margin: 10px 0 0 10px;
+  margin: 0 0 0 10px;
 }
 
 .img {

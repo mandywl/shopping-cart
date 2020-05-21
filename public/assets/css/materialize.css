@@ -4107,7 +4107,8 @@ nav a {
   color: #fff;
 }
 nav i,
-nav [class^=mdi-], nav [class*=mdi-],
+nav [class^=mdi-],
+nav [class*=mdi-],
 nav i.material-icons {
   display: block;
   font-size: 24px;
@@ -4167,7 +4168,8 @@ nav .brand-logo.right {
   padding: 0;
 }
 nav .brand-logo i,
-nav .brand-logo [class^=mdi-], nav .brand-logo [class*=mdi-],
+nav .brand-logo [class^=mdi-],
+nav .brand-logo [class*=mdi-],
 nav .brand-logo i.material-icons {
   float: left;
   margin-right: 15px;
@@ -4179,6 +4181,7 @@ nav .nav-title {
 }
 nav ul {
   margin: 0;
+  padding-right: 20px;
 }
 nav ul li {
   transition: background-color 0.3s;
@@ -4254,7 +4257,10 @@ nav .input-field label.active i {
     min-height: 64px;
   }
 
-  nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+  nav,
+nav .nav-wrapper i,
+nav a.sidenav-trigger,
+nav a.sidenav-trigger i {
     height: 64px;
     line-height: 64px;
   }

@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "setup": "mysql -u root < util/schema.sql;",
     "test": "jest; npm run lint",
     "start": "node server.js",
     "lint": "eslint --quiet .",
