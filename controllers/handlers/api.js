@@ -76,10 +76,13 @@ module.exports = {
       const symbol = currencies.data.symbol;
 
       const orders = results.map((res) => res.dataValues.product.dataValues);
+
       const send = { data: orders };
       let { choices, products } = handleCurrency(currencies.data, send);
-      if (products.price) {
+      delete products.price;
+      if (Object.keys(products).length === 0) {
         const checkout = "disabled";
+
         return res.render("cart", {
           symbol,
           choices,
@@ -90,6 +93,7 @@ module.exports = {
           checkout,
         });
       } else {
+        products = products.length === undefined ? [products[0]] : products;
         const order = products.reduce((acc, current) => {
           const x = acc.find((item) => item.id === current.id);
           if (!x) {
