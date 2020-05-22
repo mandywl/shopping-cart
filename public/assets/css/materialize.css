@@ -5137,6 +5137,8 @@ button.btn-floating {
   top: 0;
   z-index: 9999;
   transform-origin: 0 0;
+  top: 100% !important;
+  max-height: 18em;
 }
 .dropdown-content:focus {
   outline: 0;
