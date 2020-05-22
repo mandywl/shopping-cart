@@ -11,7 +11,7 @@ const prodMulIn = (currencies, productsIn) => {
 module.exports = {
   handleCurrency: (currencies, productsIn) => {
     const products =
-      productsIn.data.length > 1
+      productsIn.data.length >= 1
         ? prodMulIn(currencies, productsIn)
         : {
             ...productsIn.data,
