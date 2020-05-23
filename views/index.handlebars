@@ -13,18 +13,12 @@
 
     <div class="mySlides fade">
         <div class="numbertext black-text">2 / 3</div>
-        <img
-            class="carousel-img"
-            src="/assets/img/placeholder.png"
-        />
+        <img class="carousel-img" src="/assets/img/placeholder.png" />
     </div>
 
     <div class="mySlides fade">
         <div class="numbertext black-text">3 / 3</div>
-        <img
-            class="carousel-img"
-            src="/assets/img/placeholder1.png"
-        />
+        <img class="carousel-img" src="/assets/img/placeholder1.png" />
     </div>
 
 </div>
@@ -40,24 +34,18 @@
     <ul class="pagination center">
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
         {{#each pages}}
-        <li class="{{active}}"><a
-                href="#!"
-                onclick="
-                handlePage('{{page}}')"
-            >{{page}}</a></li>
+        <li class="{{active}}"><a href="#!" onclick="
+                handlePage('{{page}}')">{{page}}</a></li>
         {{/each}}
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
     </ul>
     <div class="row">
         {{#each products}}
-        <div class="col s12 m3">
+        <div class="col s12 m6 xl3">
             <div class="card hoverable">
                 <div class="card-image hoverable waves-effect waves-block waves-light">
                     <a onclick="handleProduct('{{id}}')">
-                        <img
-                            class="activator img"
-                            src="/assets/img/{{img}}"
-                        >
+                        <img class="activator img" src="/assets/img/{{img}}">
                     </a>
                 </div>
                 <div class="card-content">
@@ -66,10 +54,7 @@
                     <p class="trunc">{{description}}</p>
                 </div>
                 <div class="card-action">
-                    <a
-                        href="#!"
-                        onclick="orderItem({{id}},'{{product_name}}')"
-                    >
+                    <a href="#!" onclick="orderItem({{id}},'{{product_name}}')">
                         Order
                     </a>
 
@@ -81,10 +66,7 @@
     <ul class="pagination center">
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
         {{#each pages}}
-        <li class="{{active}}"><a
-                href="#!"
-                onclick="handlePage('{{page}}')"
-            >{{page}}</a></li>
+        <li class="{{active}}"><a href="#!" onclick="handlePage('{{page}}')">{{page}}</a></li>
         {{/each}}
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
     </ul>
