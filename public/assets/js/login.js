@@ -1,17 +1,24 @@
+const loginForm = $("form.login");
+const emailInput = $("input#email-input");
+const passwordInput = $("input#password-input");
+
 const loginUser = async (userData) => {
   try {
+    $(".login-preloader").addClass("active");
     await $.post("/api/login", userData);
+    emailInput.attr("disabled");
+    passwordInput.attr("disabled");
     window.location.replace("/");
   } catch (err) {
-    console.log(err);
+    emailInput.removeAttr("disabled");
+    passwordInput.removeAttr("disabled");
+    $(".login-preloader").removeClass("active");
+    $(".login-error").show();
+    passwordInput.val("");
   }
 };
 
 $(document).ready(function() {
-  const loginForm = $("form.login");
-  const emailInput = $("input#email-input");
-  const passwordInput = $("input#password-input");
-
   loginForm.on("submit", function(event) {
     event.preventDefault();
 
@@ -25,8 +32,5 @@ $(document).ready(function() {
     }
 
     loginUser(userData);
-
-    emailInput.val("");
-    passwordInput.val("");
   });
 });

@@ -81,6 +81,11 @@ main {
   color: grey;
 }
 
+.mySlides {
+  height: 350px;
+  width: 100%;
+}
+
 .mailto {
   font-style: italic;
   font-size: 0.8rem;
@@ -101,13 +106,15 @@ main {
 }
 
 .carousel-img {
-  max-height: 600px;
+  max-height: 350px;
   object-fit: cover;
+  width: 100%;
 }
 
 .mySlides {
   display: none;
 }
+
 img {
   vertical-align: middle;
 }
@@ -184,4 +191,10 @@ img {
   .text {
     font-size: 11px;
   }
+}
+
+.error {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  font-style: italic;
 }

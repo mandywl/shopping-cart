@@ -76,10 +76,13 @@ module.exports = {
       const symbol = currencies.data.symbol;
 
       const orders = results.map((res) => res.dataValues.product.dataValues);
+
       const send = { data: orders };
       let { choices, products } = handleCurrency(currencies.data, send);
-      if (products.price) {
+      delete products.price;
+      if (Object.keys(products).length === 0) {
         const checkout = "disabled";
+
         return res.render("cart", {
           symbol,
           choices,
@@ -90,6 +93,7 @@ module.exports = {
           checkout,
         });
       } else {
+        products = products.length === undefined ? [products[0]] : products;
         const order = products.reduce((acc, current) => {
           const x = acc.find((item) => item.id === current.id);
           if (!x) {
@@ -150,6 +154,36 @@ module.exports = {
         userId: req.user.id,
       };
       const result = await Orders.create(values);
+      return res.json(result);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    }
+  },
+  updateItem: async function(req, res) {
+    try {
+      const values = {
+        productId: req.params.id,
+        userId: req.user.id,
+      };
+      const productId = values.productId;
+      const userId = values.userId;
+      const update = req.query.update;
+      const result =
+        update === "add"
+          ? await Orders.create(values)
+          : await Orders.destroy({ where: { productId, userId }, limit: 1 });
+      return res.json(result);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: err.code });
+    }
+  },
+  deleteItem: async function(req, res) {
+    try {
+      const result = await Orders.destroy({
+        where: { productId: req.params.id },
+      });
       return res.json(result);
     } catch (err) {
       console.error(err);

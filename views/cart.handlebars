@@ -2,9 +2,25 @@
     <div class="container">
         <div class="card-panel signup">
             <h4>Orders</h4>
+            <div class="center">
+                <div class="preloader-wrapper big order-preloader">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr>
+                        <th>Remove</th>
                         <th>Product</th>
                         <th>Qty</th>
                         <th>Price</th>
@@ -16,6 +32,13 @@
                     {{#each order}}
 
                     <tr>
+                        <td>
+                            <a
+                                href=""
+                                class="update-order red-text"
+                                onclick="deleteItem({{id}})"
+                            ><i class="material-icons">close</i></a>
+                        </td>
                         <td>
                             <div class="row">
                                 <div class="col s12 m4">
@@ -36,7 +59,21 @@
                             </div>
 
                         </td>
-                        <td>{{qty}}</td>
+                        <td>
+                            <div class="center">
+                                <a
+                                    href=""
+                                    class="update-order"
+                                    onclick="updateItem({{id}},'add', {{qty}})"
+                                ><i class="material-icons">arrow_drop_up</i></a>
+                                <span>{{qty}}</span>
+                                <a
+                                    href=""
+                                    class="update-order"
+                                    onclick="updateItem({{id}},'remove', {{qty}})"
+                                ><i class="material-icons">arrow_drop_down</i></a>
+                            </div>
+                        </td>
                         <td>{{{price}}}</td>
                         <td>{{{subtotal}}}</td>
 

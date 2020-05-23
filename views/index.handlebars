@@ -1,18 +1,30 @@
-<div class="slideshow-container">
+<div class="slideshow-container z-depth-3">
 
-    <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img class="carousel-img" src="/assets/img/carouselImg1.jpg" style="width:100%">
+    <div class="mySlides fade grey-text">
+        <div class="numbertext black-text">1 / 3</div>
+        <img>
+        <div class="center">
+            <h1>Welcome</h1>
+        </div>
+        <div class="center">
+            <h1>Logo</h1>
+        </div>
     </div>
 
     <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img class="carousel-img" src="/assets/img/chickenBurger.jpg" style="width:100%">
+        <div class="numbertext black-text">2 / 3</div>
+        <img
+            class="carousel-img"
+            src="/assets/img/placeholder.png"
+        />
     </div>
 
     <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-        <img class="carousel-img" src="/assets/img/cheeseBurger.jpg" style="width:100%">
+        <div class="numbertext black-text">3 / 3</div>
+        <img
+            class="carousel-img"
+            src="/assets/img/placeholder1.png"
+        />
     </div>
 
 </div>
@@ -28,7 +40,11 @@
     <ul class="pagination center">
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
         {{#each pages}}
-        <li class="{{active}}"><a onclick="handlePage('{{page}}')">{{page}}</a></li>
+        <li class="{{active}}"><a
+                href="#!"
+                onclick="
+                handlePage('{{page}}')"
+            >{{page}}</a></li>
         {{/each}}
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
     </ul>
@@ -38,7 +54,10 @@
             <div class="card hoverable">
                 <div class="card-image hoverable waves-effect waves-block waves-light">
                     <a onclick="handleProduct('{{id}}')">
-                        <img class="activator img" src="/assets/img/{{img}}">
+                        <img
+                            class="activator img"
+                            src="/assets/img/{{img}}"
+                        >
                     </a>
                 </div>
                 <div class="card-content">
@@ -47,7 +66,10 @@
                     <p class="trunc">{{description}}</p>
                 </div>
                 <div class="card-action">
-                    <a onclick="orderItem({{id}},'{{product_name}}')">
+                    <a
+                        href="#!"
+                        onclick="orderItem({{id}},'{{product_name}}')"
+                    >
                         Order
                     </a>
 
@@ -59,7 +81,10 @@
     <ul class="pagination center">
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
         {{#each pages}}
-        <li class="{{active}}"><a onclick="handlePage('{{page}}')">{{page}}</a></li>
+        <li class="{{active}}"><a
+                href="#!"
+                onclick="handlePage('{{page}}')"
+            >{{page}}</a></li>
         {{/each}}
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
     </ul>

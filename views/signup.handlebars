@@ -9,6 +9,21 @@
                 />
                 <h2>Signup</h2>
             </div>
+            <div class="center">
+                <div class="preloader-wrapper big signup-preloader">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <form class="signup">
                 <div class="input-field">
 
@@ -74,6 +89,12 @@
                         required
                     >
                 </div>
+                <span
+                    hidden="true"
+                    class="sign-error center error materialize-red-text"
+                >
+                    Looks like something went wrong, please try again.
+                </span>
                 <div class="signup-action center">
                     <button
                         type="submit"
@@ -100,3 +121,4 @@
     async
     defer
 ></script>
+<script src="/assets/js/address-autocomplete.js"></script>

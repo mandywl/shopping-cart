@@ -33,6 +33,7 @@ module.exports = {
         categoriesRaw.data,
         category
       );
+      delete products.price;
 
       res.locals.metaTags = {
         title: categoryString,
