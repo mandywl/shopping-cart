@@ -80,8 +80,9 @@
 
 👤 **Mandy Wells-Lakeland**
 
-- Website:
+- Website: https://mandywl.github.io/02-Responsive-Portfolio-Mandy/
 - Github: [@mandywl](https://github.com/mandywl)
+- LinkedIn: [@mandywellslakeland](https://www.linkedin.com/in/mandy-wells-lakeland-23b55087/)
 
 ## 🤝 Contributing
 
