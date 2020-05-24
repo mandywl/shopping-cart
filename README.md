@@ -18,7 +18,13 @@
 
 ### 🏠 [Homepage](https://github.com/mandywl/shopping-cart)
 
-### ✨ [Demo](TBA)
+### ✨ [Demo](http://shopping-cart-template.herokuapp.com/)
+<div align="center">
+<img alt="interface" src= "public/assets/img/appScreenCapture.gif" width= 60%/>
+</div>
+
+### ✨ [Burger App](https://e-store-template.herokuapp.com/)
+### ✨ [Electronics App](https://shopping-cart-electronics.herokuapp.com/)
 
 ## Install
 
