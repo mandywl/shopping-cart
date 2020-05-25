@@ -18,45 +18,57 @@
 
 ### 🏠 [Homepage](https://github.com/mandywl/shopping-cart)
 
-### ✨ [Demo](TBA)
+### ✨ [Demo](http://shopping-cart-template.herokuapp.com/)
+
+<div align="center">
+<img alt="interface" src= "public/assets/img/appScreenCapture.gif" width= 60%/>
+</div>
+
+### ✨ [Resteraunt example](https://e-store-template.herokuapp.com/)
+
+### ✨ [Electronics example](https://shopping-cart-electronics.herokuapp.com/)
 
 ## Install
 
-> > ```sh
-> > npm install;
-> > ```
+> ```sh
+> npm install;
+> ```
 >
 > The above will install the project dependencies.
 
-> > `npm run setup;` (Optional)
+> `npm run setup;` (Optional)
 >
 > The above will create a db for test development, if you have the mysql cli with root user and no password.
+>
+> The exchange rates are gatherd using [exchangerate-api.com](https://www.exchangerate-api.com/). Click the previous link and signup for an api-key.
+>
+> Ensure you have an enviroment variable called `EXCHANGE_API_KEY`, set to you api-key,
 
 ## Usage
 
-> > ```sh
-> > npm run start;
-> > ```
+> ```sh
+> npm run start;
+> ```
 >
 > The above will run the project,
 >
 > or use `npm run watch` for development.
 
-> > ```sh
-> > npm run theme;
-> > ```
+> ```sh
+> npm run theme;
+> ```
 >
 > The above will generate new materialize.css from [`util/sass`](https://github.com/mandywl/shopping-cart/tree/master/util/sass).
 >
 > or use `npm run watch-theme` for development.
 
-> > Make changes to [`util/product-list.csv`](https://github.com/mandywl/shopping-cart/tree/master/util/product-list.csv) to easily create and update products.
+> Make changes to [`util/product-list.csv`](https://github.com/mandywl/shopping-cart/tree/master/util/product-list.csv) to easily create and update products.
 
 ## Run tests
 
-> > ```sh
-> > npm run test
-> > ```
+> ```sh
+> npm run test
+> ```
 >
 > The above will run the specidfied linting code in [`.eslintrc.json`](https://github.com/mandywl/shopping-cart/blob/master/.eslintrc.json).
 >
@@ -74,8 +86,9 @@
 
 👤 **Mandy Wells-Lakeland**
 
-- Website:
+- Website: https://mandywl.github.io/02-Responsive-Portfolio-Mandy/
 - Github: [@mandywl](https://github.com/mandywl)
+- LinkedIn: [@mandywellslakeland](https://www.linkedin.com/in/mandy-wells-lakeland-23b55087/)
 
 ## 🤝 Contributing
 
